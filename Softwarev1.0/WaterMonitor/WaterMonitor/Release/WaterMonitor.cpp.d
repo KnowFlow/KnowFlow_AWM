@@ -1,0 +1,31 @@
+C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\WaterMonitor.cpp.o: \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\WaterMonitor.cpp \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/arduino.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/binary.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/WString.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Stream.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Print.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Printable.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Arduino.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\variants\standard/pins_arduino.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\libraries\SPI\src/SPI.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/SD.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/SdFat.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/Sd2Card.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/Sd2PinMap.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/SdInfo.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/FatStructs.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Print.h \
+ C:\Users\jason\Documents\Arduino\libraries\SD\src/utility/SdFatUtil.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\libraries\Wire\src/Wire.h \
+ D:\arduino-1.8.2\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\GravitySensorHub.h \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\ISensor.h \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\GravityRtc.h \
+ C:\Users\jason\Documents\Arduino\libraries\OneWire/OneWire.h \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\SdService.h \
+ C:\Users\jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\Debug.h
