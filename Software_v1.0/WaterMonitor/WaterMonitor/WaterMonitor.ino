@@ -75,6 +75,7 @@ void setup() {
 // 返 回 值: 返回一个double类型的数据 
 //********************************************************************************************
 
+unsigned long updateTime = 0;
 
 void loop() {
 	rtc.update();
@@ -82,17 +83,21 @@ void loop() {
 	sdService.update();
 
 	//*************************串口调试******************
-	
-  Serial.print(F("ph= "));
-	Serial.print(sensorHub.getValueBySensorNumber(0));
-	Serial.print(F("  Temp= "));
-	Serial.print(sensorHub.getValueBySensorNumber(1));
-	Serial.print(F("  Do= "));
-	Serial.print(sensorHub.getValueBySensorNumber(2));
-	Serial.print(F("  Ec= "));
-	Serial.println(sensorHub.getValueBySensorNumber(3));
-	Serial.print(F("  Orp= "));
-	Serial.println(sensorHub.getValueBySensorNumber(4));
+//	if(millis() - updateTime > 1000)
+//  {
+//    updateTime = millis();
+//    Serial.print(F("ph= "));
+//    Serial.print(sensorHub.getValueBySensorNumber(0));
+//    Serial.print(F("  Temp= "));
+//    Serial.print(sensorHub.getValueBySensorNumber(1));
+//    Serial.print(F("  Do= "));
+//    Serial.print(sensorHub.getValueBySensorNumber(2));
+//    Serial.print(F("  Ec= "));
+//    Serial.print(sensorHub.getValueBySensorNumber(3));
+//    Serial.print(F("  Orp= "));
+//    Serial.println(sensorHub.getValueBySensorNumber(4));
+//  }
+  
 
 }
 
