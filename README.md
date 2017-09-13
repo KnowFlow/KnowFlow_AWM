@@ -1,4 +1,4 @@
-###Introduction
+### Introduction
 
 KnowFlow is designed for environmental activists who wants to monitor water quality and get real time data. Now it can monitor 5 parameters: Temperature, pH, ORP, Electronic conductivities, Dissolved Oxygen. It is based on Arduino, easy to change and add more sensors and modules. Currently it stores the data on a micro SD card, also the data can be read on phone by bluetooth (except for Dissolved Oxygen).
 
@@ -13,7 +13,7 @@ KnowFlow can be powered by power bank or Li battery.
 
 You can find the courses video which is made by GreenSeed and MushroomCloud makerspace.
 
-###Features
+### Features
 
 * pH、EC、temperature auto record
 * store in SD
@@ -21,7 +21,7 @@ You can find the courses video which is made by GreenSeed and MushroomCloud make
 * plug and play
 * Bluetooth built-in
 
-###Documents
+### Documents
 
  * [tutorial][15]
  * [GreenSeed online courses][16]
