@@ -21,7 +21,7 @@
 
 #pragma once
 
-#define RTC_Address   0x32  //RTC_Address 
+#define RTC_Address   0x32  //RTC_Address
 
 class GravityRtc
 {
@@ -30,7 +30,7 @@ public:
 	~GravityRtc();
 
 public:
-	//年月日周时分秒
+	// Year Month Day Weekday Minute Seconds
 	unsigned int year;
 	unsigned char month;
 	unsigned char day;
@@ -38,27 +38,27 @@ public:
 	unsigned char hour;
 	unsigned char minute;
 	unsigned char second;
-	
-	//初始化RTC时间设置相应的年月日周时分秒
+
+	// initialize the RTC time to set the corresponding year, month, day, day, minute, minute
 	void initRtc();
 
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新传感器数据
-	void update();
-	
+	// update the sensor data
+	void  update ();
+
 
 private:
 	unsigned char date[7];
 
-	//读取时钟数据
-	void readRtc();
+	// read the clock data
+	void  readRtc ();
 
-	//解析RTC数据
+	// parse RTC data
 	void processRtc();
 
-	//十进制转BCD
+	// decimal to BCD
 	char decTobcd(char num);
 	void WriteTimeOn(void);
 	void WriteTimeOff(void);

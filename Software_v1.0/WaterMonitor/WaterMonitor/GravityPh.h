@@ -25,17 +25,17 @@
 class GravityPh:public ISensor
 {
 public:
-	//ph传感器引脚
-	int phSensorPin;          
+	// ph sensor pin
+	int phSensorPin;
 
-	//偏移补偿
-	float offset;   
+	// offset compensation
+	float offset;
 
-	//抽取样本间隔
-	int samplingInterval;   
+	// Take the sample interval
+	int samplingInterval;
 private:
 	static const int arrayLength = 5;
-	int pHArray[arrayLength];   //储存传感器返回数据的平均值 
+	int pHArray [arrayLength];    // stores the average value of the sensor return data
 	double pHValue, voltage;
 	double averageVoltage;
 	double sum;
@@ -43,13 +43,13 @@ private:
 public:
 	GravityPh();
 	~GravityPh() {};
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新传感器数据
-	void update();
+	// update the sensor data
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValue();
 };
 

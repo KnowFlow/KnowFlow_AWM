@@ -38,24 +38,24 @@ public:
 	int chipSelect;
 public:
 	SdService(ISensor* gravitySensor[]);
-	~SdService();
+	~ SdService ();
 
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新写入SD卡数据
-	void update();
+	// Update write SD card data
+	void  update ();
 
 private:
-	//指向存放传感器数组的指针
+	// points to the pointer to the array of sensors
 	ISensor** gravitySensor;
 	//String dataString ;
 
-	//文件句柄
+	// file handle
 	File dataFile;
 	unsigned long sdDataUpdateTime;
 
-	//连接字符串数据
+	// Connect the string data
 	void connectString(double value);
 };
 

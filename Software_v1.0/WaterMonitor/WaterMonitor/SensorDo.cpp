@@ -19,7 +19,7 @@
 
 #include "SensorDo.h"
 
-SensorDo::SensorDo() 
+SensorDo::SensorDo()
 {
 
 }
@@ -31,18 +31,18 @@ SensorDo::~SensorDo()
 
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化传感器
+// function name: setup ()
+// Function Description: Initializes the sensor
 //********************************************************************************************
 void SensorDo::setup()
 {
-	sensorstring.reserve(30); 
+	sensorstring.reserve(30);
 }
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新传感器数值
+// function name: update ()
+// Function Description: Update the sensor value
 //********************************************************************************************
 void SensorDo::update()
 {
@@ -64,8 +64,8 @@ void SensorDo::update()
 }
 
 //********************************************************************************************
-// 函数名称: getValue()
-// 函数说明：返回传感器数据
+// function name: getValue ()
+// Function Description: Returns the sensor data
 //********************************************************************************************
 double SensorDo::getValue()
 {

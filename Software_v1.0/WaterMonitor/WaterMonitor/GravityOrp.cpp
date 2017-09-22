@@ -32,8 +32,8 @@ GravityOrp::~GravityOrp()
 }
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化传感器
+// function name: setup ()
+// Function Description: Initializes the sensor
 //********************************************************************************************
 void GravityOrp::setup()
 {
@@ -42,8 +42,8 @@ void GravityOrp::setup()
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新传感器数值
+// function name: update ()
+// Function Description: Update the sensor value
 //********************************************************************************************
 void GravityOrp::update()
 {
@@ -55,7 +55,7 @@ void GravityOrp::update()
 		orpTimer = millis() + 20;
 		orpArray[orpArrayIndex++] = analogRead(orpSensorPin);    //read an analog value every 20ms
 
-		if (orpArrayIndex == arrayLength)   //5*20 = 100ms计算一次
+		if (orpArrayIndex == arrayLength)    // 5 * 20 = 100ms calculated once
 		{
 			orpArrayIndex = 0;
 			for(int i = 0; i < arrayLength; i++)
@@ -64,14 +64,14 @@ void GravityOrp::update()
 			this->sum = 0;
 			//convert the analog value to orp according the circuit
 			this->orpValue = ((30 * this->voltage * 1000) - (75 * averageOrp*this->voltage * 1000 / 1024)) / 75 - this->offset;
-		}	
+		}
 	}
 }
 
 
 //********************************************************************************************
-// 函数名称: getValue()
-// 函数说明：返回传感器数据
+// function name: getValue ()
+// Function Description: Returns the sensor data
 //********************************************************************************************
 double GravityOrp::getValue()
 {

@@ -34,19 +34,19 @@ GravityRtc::~GravityRtc()
 }
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化传感器
+// function name: setup ()
+// Function Description: Initializes the sensor
 //********************************************************************************************
 void GravityRtc::setup()
 {
 	Wire.begin();
-	//initRtc();
+	// initRtc ();
 }
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新传感器数值
+// function name: update ()
+// Function Description: Update the sensor value
 //********************************************************************************************
 void GravityRtc::update()
 {
@@ -55,19 +55,19 @@ void GravityRtc::update()
 		timeUpdate = millis();
 		readRtc();
 		processRtc();
-	}	
+	}
 }
 
 //********************************************************************************************
-// 函数名称: initRtc()
-// 函数说明：初始化RTC时钟
+// function name: initRtc ()
+// Function Description: Initializes the RTC clock
 //********************************************************************************************
 void GravityRtc::initRtc()
 {
 	WriteTimeOn();
 
-	Wire.beginTransmission(RTC_Address);
-	Wire.write(char(0));//Set the address for writing       
+	Wire. beginTransmission (RTC_Address);
+	Wire.write(char(0));//Set the address for writing
 	Wire.write(this->decTobcd(second));
 	Wire.write(this->decTobcd(minute));
 	Wire.write(this->decTobcd(hour + 80));      // +80: sets 24 hours format
@@ -77,8 +77,8 @@ void GravityRtc::initRtc()
 	Wire.write(this->decTobcd(year-2000));
 	Wire.endTransmission();
 
-	Wire.beginTransmission(RTC_Address);
-	Wire.write(0x12);   //Set the address for writing       
+	Wire. beginTransmission (RTC_Address);
+	Wire.write(0x12);   //Set the address for writing
 	Wire.write(char(0));
 	Wire.endTransmission();
 
@@ -87,8 +87,8 @@ void GravityRtc::initRtc()
 
 
 //********************************************************************************************
-// 函数名称: readRtc()
-// 函数说明：读取RTC时钟数据
+// function name: readRtc ()
+// Function Description: Read RTC clock data
 //********************************************************************************************
 void GravityRtc::readRtc()
 {
@@ -105,8 +105,8 @@ void GravityRtc::readRtc()
 
 
 //********************************************************************************************
-// 函数名称: processRtc()
-// 函数说明：解析readRtc得到的RTC数据
+// function name: processRtc ()
+// Function Description: Resolves the RTC data obtained by readRtc
 //********************************************************************************************
 void GravityRtc::processRtc()
 {
@@ -134,8 +134,8 @@ void GravityRtc::processRtc()
 
 
 //********************************************************************************************
-// 函数名称: decTobcd()
-// 函数说明：十进制转BCD
+// function name: decTobcd ()
+// Function Description: Decimal to BCD
 //********************************************************************************************
 char GravityRtc::decTobcd(char num)
 {
@@ -147,28 +147,28 @@ char GravityRtc::decTobcd(char num)
 
 void GravityRtc::WriteTimeOn(void)
 {
-	Wire.beginTransmission(RTC_Address);
-	Wire.write(0x10);//Set the address for writing as 10H       
-	Wire.write(0x80);//Set WRTC1=1      
+	Wire. beginTransmission (RTC_Address);
+	Wire.write(0x10);//Set the address for writing as 10H
+	Wire.write(0x80);//Set WRTC1=1
 	Wire.endTransmission();
 
-	Wire.beginTransmission(RTC_Address);
-	Wire.write(0x0F);//Set the address for writing as OFH       
-	Wire.write(0x84);//Set WRTC2=1,WRTC3=1      
+	Wire. beginTransmission (RTC_Address);
+	Wire.write(0x0F);//Set the address for writing as OFH
+	Wire.write(0x84);//Set WRTC2=1,WRTC3=1
 	Wire.endTransmission();
 }
 
 void GravityRtc::WriteTimeOff(void)
 {
-	Wire.beginTransmission(RTC_Address);
-	Wire.write(0x0F);   //Set the address for writing as OFH        
-	Wire.write(0);//Set WRTC2=0,WRTC3=0      
-	Wire.write(0);//Set WRTC1=0  
+	Wire. beginTransmission (RTC_Address);
+	Wire.write(0x0F);   //Set the address for writing as OFH
+	Wire.write(0);//Set WRTC2=0,WRTC3=0
+	Wire.write(0);//Set WRTC1=0
 	Wire.endTransmission();
 }
 
 
-/*************************************测试打印代码***********************************/
+/ * ************************************ Test Print Code ********* ************************* * /
 //Serial.print("Year = ");//year
 //Serial.print(rtc.year);
 //Serial.print("   Month = ");//month

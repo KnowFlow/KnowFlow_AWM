@@ -30,8 +30,8 @@ GravityTemperature::~GravityTemperature()
 
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化传感器
+// function name: setup ()
+// Function Description: Initializes the sensor
 //********************************************************************************************
 void GravityTemperature::setup()
 {
@@ -39,14 +39,14 @@ void GravityTemperature::setup()
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新传感器数值
+// function name: update ()
+// Function Description: Update the sensor value
 //********************************************************************************************
 void GravityTemperature::update()
 {
-	if (millis() - tempSampleTime >= tempSampleInterval)
+	if ( millis () - tempSampleTime> = tempSampleInterval)
 	{
-		tempSampleTime = millis();
+		tempSampleTime = millis ();
 		temperature = TempProcess(ReadTemperature);  // read the current temperature from the  DS18B20
 		TempProcess(StartConvert);                   //after the reading,start the convert for next reading
 	}
@@ -54,8 +54,8 @@ void GravityTemperature::update()
 
 
 //********************************************************************************************
-// 函数名称: getValue()
-// 函数说明：返回传感器数据
+// function name: getValue ()
+// Function Description: Returns the sensor data
 //********************************************************************************************
 double GravityTemperature::getValue()
 {
@@ -64,8 +64,8 @@ double GravityTemperature::getValue()
 
 
 //********************************************************************************************
-// 函数名称: TempProcess()
-// 函数说明：解析温度数据
+// function name: TempProcess ()
+// Function Description: Analyze the temperature data
 //********************************************************************************************
 double GravityTemperature::TempProcess(bool ch)
 {
@@ -93,7 +93,7 @@ double GravityTemperature::TempProcess(bool ch)
 	else {
 		byte present = oneWire->reset();
 		oneWire->select(addr);
-		oneWire->write(0xBE); // Read Scratchpad            
+		oneWire->write(0xBE); // Read Scratchpad
 		for (int i = 0; i < 9; i++) { // we need 9 bytes
 			data[i] = oneWire->read();
 		}

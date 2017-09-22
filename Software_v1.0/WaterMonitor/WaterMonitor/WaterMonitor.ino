@@ -1,42 +1,42 @@
 /*********************************************************************
-* WaterMonitor.ino
-*
-* Copyright (C)    2017   [DFRobot](http://www.dfrobot.com)
-* GitHub Link :https://github.com/DFRobot/watermonitor
-* This Library is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* Description:
-* This sample code is mainly used to monitor water quality
-* including ph, temperature, dissolved oxygen, ec and orp,etc.
-* 
-* Software Environment: Arduino IDE 1.8.2 
-* Software download link: https://www.arduino.cc/en/Main/Software
-* 
-* Install the library file：
-* Copy the files from the github repository folder libraries to the libraries
-* in the Arduino IDE 1.8.2 installation directory
-*
-* Hardware platform   : Arduino M0 Or Arduino Mega2560
-* Sensor pin: 
-* EC  : A1
-* PH  : A2
-* ORP : A3
-* RTC : I2C
-* DO  : Serial port Rx(0),Tx(1)
-* temperature:D5
-*
-* SD card attached to SPI bus as follows:
-* Mega:  MOSI - pin 51, MISO - pin 50, CLK - pin 52, CS - pin 53
-* and pin #53 (SS) must be an output
-* M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
-*
-* author  :  Jason(jason.ling@dfrobot.com)
-* version :  V1.0
-* date    :  2017-04-06
-**********************************************************************/
+ * WaterMonitor.ino
+ *
+ * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com)
+ * GitHub Link :https://github.com/DFRobot/watermonitor
+ * This Library is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Description:
+ * This sample code is mainly used to monitor water quality
+ * including ph, temperature, dissolved oxygen, ec and orp,etc.
+ *
+ * Software Environment: Arduino IDE 1.8.2
+ * Software download link: https://www.arduino.cc/en/Main/Software
+ *
+ * Install the library file：
+ * Copy the files from the github repository folder libraries to the libraries
+ * in the Arduino IDE 1.8.2 installation directory
+ *
+ * Hardware platform   : Arduino M0 Or Arduino Mega2560
+ * Sensor pin:
+ * EC  : A1
+ * PH  : A2
+ * ORP : A3
+ * RTC : I2C
+ * DO  : Serial port Rx(0),Tx(1)
+ * temperature:D5
+ *
+ * SD card attached to SPI bus as follows:
+ * Mega:  MOSI - pin 51, MISO - pin 50, CLK - pin 52, CS - pin 53
+ * and pin #53 (SS) must be an output
+ * M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
+ *
+ * author  :  Jason(jason.ling@dfrobot.com)
+ * version :  V1.0
+ * date    :  2017-04-06
+ **********************************************************************/
 
 #include <SPI.h>
 #include <SD.h>
@@ -46,13 +46,13 @@
 #include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
-#include "SdService.h" 
+#include "SdService.h"
 #include "Debug.h"
 
-//时钟模块
+// clock module
 GravityRtc rtc;
 
-//传感器监视器
+// sensor monitor
 GravitySensorHub sensorHub;
 SdService sdService = SdService(sensorHub.sensors);
 void setup() {
@@ -65,14 +65,14 @@ void setup() {
 
 
 //********************************************************************************************
-// 函数名称: sensorHub.getValueBySensorNumber(0)
-// 函数说明：获取传感器的数值，不同的参数代表获取不同的传感器数据     
-// 参    数: 0  ph值  
-// 参    数: 1  温度值    
-// 参    数: 2  溶解氧
-// 参    数: 3  电导率
-// 参    数: 4  氧化还原电位
-// 返 回 值: 返回一个double类型的数据 
+// function name: sensorHub.getValueBySensorNumber (0)
+// Function Description: Get the sensor's values, and the different parameters represent the acquisition of different sensor data     
+// Parameters: 0 ph value  
+// Parameters: 1 temperature value    
+// Parameters: 2 Dissolved Oxygen
+// Parameters: 3 Conductivity
+// Parameters: 4 Redox potential
+// return value: returns a double type of data
 //********************************************************************************************
 
 unsigned long updateTime = 0;
@@ -82,7 +82,7 @@ void loop() {
 	sensorHub.update();
 	sdService.update();
 
-	//*************************串口调试******************
+		// ************************* Serial debugging ******************
 //	if(millis() - updateTime > 1000)
 //  {
 //    updateTime = millis();
@@ -97,16 +97,16 @@ void loop() {
 //    Serial.print(F("  Orp= "));
 //    Serial.println(sensorHub.getValueBySensorNumber(4));
 //  }
-  
+
 
 }
 
 
 
-/******************************相关调试信息的打印***************************/
-//注意:Arduino M0打印调试信息的时候需要将Serial替换成SerialUSB
+/ * ***************************** Print the relevant debugging information ************** ************ * /
+// Note: Arduino M0 need to replace Serial with SerialUSB when printing debugging information
 
-//*************************串口调试******************
+// ************************* Serial debugging ******************
 //Serial.print("ph= ");
 //Serial.print(sensorHub.getValueBySensorNumber(0));
 //Serial.print("  Temp= ");
@@ -117,7 +117,7 @@ void loop() {
 //Serial.println(sensorHub.getValueBySensorNumber(3));
 
 
-//*************************时间********************************
+// ************************************************************ time ********************** **********
 //Serial.print("   Year = ");//year
 //Serial.print(rtc.year);
 //Serial.print("   Month = ");//month

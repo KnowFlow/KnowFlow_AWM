@@ -27,7 +27,7 @@
 
 
 
-//SD卡片选引脚
+// SD card select pin
 //#if defined(__SAMD21G18A__)
 #if  defined(__AVR_ATmega2560__)
 
@@ -48,27 +48,27 @@ const int CsPin = 4;
 extern GravityRtc rtc;
 String dataString = "";
 
-SdService::SdService(ISensor* gravitySensor[]) :chipSelect(CsPin),sdDataUpdateTime(0)
+SdService :: SdService (ISensor * gravitySensor []): chipSelect (CsPin), sdDataUpdateTime ( 0 )
 {
 	this->gravitySensor = gravitySensor;
 }
 
 
-SdService::~SdService()
+SdService :: ~ SdService ()
 {
 }
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化SD卡
+// function name: setup ()
+// Function Description: Initialize the SD card
 //********************************************************************************************
 void SdService::setup()
 {
 	Debug::println("Initializing SD card...");
-	
+
 	pinMode(SS, OUTPUT);
 
-	if (!SD.begin(chipSelect)) 
+	if (!SD.begin(chipSelect))
 	{
 		Debug::println("Card failed, or not present");
 		// don't do anything more:
@@ -77,27 +77,27 @@ void SdService::setup()
 
 	Debug::println("card initialized.");
 
-	//写入文件头
+	// write the file header
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
 		dataFile.println("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l0,ec(s/m),orp(mv)");
 		dataFile.close();
 	}
-		
+
 }
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明: 更新SD卡中的数据
+// function name: update ()
+// Function Description: Update the data in the SD card
 //********************************************************************************************
 void SdService::update()
 {
 	if (millis() - sdDataUpdateTime > 2000) //2000ms
 	{
-		
+
 		dataString = "";
-		//年月日时分秒
+		// Year Month Day Hours Minute Seconds
 		dataString += String(rtc.year,10);
 		dataString += ",";
 		dataString += String(rtc.month, 10);
@@ -110,8 +110,8 @@ void SdService::update()
 		dataString += ",";
 		dataString += String(rtc.second, 10);
 		dataString += ",";
-	
-		//写入SD卡,分两次写数据，防止单次写入数据过大造成丢失
+
+		// write SD card, write data twice, to prevent a single write data caused by the loss of too large
 		dataFile = SD.open("sensor.csv", FILE_WRITE);
 		if (dataFile)
 		{
@@ -128,8 +128,8 @@ void SdService::update()
 		}
 		else
 			connectString(0);
-			
-		//温度
+
+		// temperature
 		if (this->gravitySensor[1] != NULL) {
 			connectString(this->gravitySensor[1]->getValue());
 		}
@@ -157,9 +157,9 @@ void SdService::update()
 		else
 			connectString(0);
 
-		//写入SD卡
+		// write SD card
 		dataFile = SD.open("sensor.csv", FILE_WRITE);
-		if (dataFile) 
+		if (dataFile)
 		{
 			dataFile.println(dataString);
 			dataFile.close();
@@ -171,8 +171,8 @@ void SdService::update()
 }
 
 //********************************************************************************************
-// 函数名称: connectString()
-// 函数说明: 连接字符串数据
+// function name: connectString ()
+// Function Description: Connects the string data
 //********************************************************************************************
 void SdService::connectString(double value)
 {

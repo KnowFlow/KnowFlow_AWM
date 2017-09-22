@@ -30,25 +30,25 @@ private:
 
 public:
 	//********************************************************************************************
-	// 函数名称: sensors[]
-	// 函数说明：存放传感器的数组   
-	// 参    数: 0  ph传感器  
-	// 参    数: 1  温度值传感器   
-	// 参    数: 2  溶解氧传感器 
-	// 参    数: 3  电导率传感器 
-	// 参    数: 4  氧化还原电位传感器 
+	// function name: sensors []
+	// Function Description: Store the array of sensors
+	// Parameters: 0 ph sensor
+	// Parameters: 1 temperature sensor
+	// Parameters: 2 Dissolved oxygen sensor
+	// Parameters: 3 Conductivity sensor
+	// Parameters: 4 Redox potential sensor
 	//********************************************************************************************
 	ISensor *sensors[SensorCount] = {0};
 public:
 	GravitySensorHub();
 	~GravitySensorHub();
 
-	//初始化所有传感器
-	void setup();
+	// initialize all sensors
+	void  setup ();
 
-	//更新所有传感器数值
-	void update();
+	// update all sensor values
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValueBySensorNumber(int num);
 };
