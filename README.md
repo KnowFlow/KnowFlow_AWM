@@ -1,25 +1,51 @@
-### Introduction
+# KnowFlow - an open source river quality meter with Arduino
 
-KnowFlow is designed for environmental activists who wants to monitor water quality and get real time data. Now it can monitor 5 parameters: Temperature, pH, ORP, Electronic conductivities, Dissolved Oxygen. It is based on Arduino, easy to change and add more sensors and modules. Currently it stores the data on a micro SD card, also the data can be read on phone by bluetooth (except for Dissolved Oxygen).
+KnowFlow is an open source water monitoring device and an education program.
 
-KnowFlow AWM (Automatic Water Monitor) is the first kits for Open science in KnowFlow team. KnowFlow team is base from NGO GreenSeed. We are going to build a low cost water monitor for the people who is join the course. Then we found that a lots of people need the water monitor, so we relase all the things to help people make themself a water monitor.
-Using the water monitor you can find the water quality by real time, also you can store the data into the tf card, so you can analysis the data.It can be using on environment study, polution soucing and teaching ets.
-KnowFlow team is foucs on solve the problem which in environment and agriculture. We can provide best tool by using hardware, software, courses and cloud technology. We can support scientist, student, citizen and environmentalist to using the Digital Technology at application in environment and agriculture. We want to by doing this to promote development of the Open Science and Open innovation.
-KnowFlow Kits is using the DFRobot Gravity Sensor series.
-Gravity Sensor series are easy to use and high compatibility.
-If you are not care about the code, you can just upload the hex into the Bluno board without any coding job.
-After that you can find that the data is storing into the TF card.
-KnowFlow can be powered by power bank or Li battery.
+![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
 
-You can find the courses video which is made by GreenSeed and MushroomCloud makerspace.
 
-### Features
 
-* pH、EC、temperature auto record
-* store in SD
-* Extensible design
-* plug and play
-* Bluetooth built-in
+For the device part, KnowFlow is designed for environmental activists, researchers, students... anyone who wants to know the water quality using low cost and customized tools. It is based on arduino uno, currently can monitor 5 parameters: Temperature, pH, ORP, Electronic conductivities, Dissolved Oxygen, the data is stored on a micro SD card, or read directly on phone by bluetooth (except for Dissolved Oxygen). All the modules are easy to change or add. Most of the sensor used are from DFRobot and Atlas Scientific, which are the main 2 sensor suppliers for Arduino users.
+
+![](https://publiclab.org/system/images/photos/000/020/719/large/Lauren_Field_Test.jpg)
+
+For the education program, KnowFlow is a 8 weeks online course and a learning group (launched on Greenseed Project platform). In which we will introduce the basic knowledge about water quality and indicators of water quality, Arduino and monitoring system, and show you how to build your own online monitor system based on arduino. Use Arduino as a master controller, and connected it to a variety of sensors. Except for the 5 parameters which are already included in the KnowFlow kits, you can add other environmental sensors on, such as carbon dioxide, ozone, dust, light, temperature, humidity sensors. Then use GPS and other communication module to connect all the data from distance. There will be step by step demos in the course to walk you through this learning process.
+
+This page is a collective information lists for KnowFlow, it can also be found on github, [Youku](http://v.youku.com/v_show/id_XMTYzNTA1NzU1Mg==.html?spm=a2hzp.8253876.0.0&f=27620513).
+Will release this series video tutorial on youtube later soon!
+
+
+
+## KnowFlow Hardware 
+
+[You can buy all KnowFlow Components online, the comprehansive list is here.](https://docs.google.com/spreadsheets/d/1rwVUIwqTOvZiKi_0vdBPrXMIw2YB-nsFnhaVy5seE-M/edit?usp=sharing)
+
+Central Control Unit: Arduino Uno (DFRobot Bluno in this case) and Expansion Shield (DFRobot Expansion Shield V7.1 in this case)
+Water Sensors: pH (pH probe and pH circuit board); EC (EC probe and EC circuit board); ORP (ORP probe and ORP circuit board); Temperature (temperature probe and temperature circuit board); Dissolved Oxygen (DO probe, BNC and circuit board); real time clock circuit board
+Data Storage: Micro-SD module, Micro SD card
+Fit and fix: mounting plate, water proof box( 200mm_150mm_75mm), water proof joint
+Other parts: Cables (Wires), bread board, bolts and nuts, screws, battery, double-sided adhesive, write on tape, small wrench, spiral cable wrap
+The size, modal, drawings, and other specifications of the materials can be found here at google docs.
+We are still working with DFRobot team to release a KnowFlow starter kit, which will be available in next several months. If you’re interested in our product. Please contact with us via email. 
+Email addr - @ShanHe
+
+## KnowFlow Software
+
+Download Arduino IDE
+Download Knowflow code from KnowFlow github
+find "WaterMonitor.ino" from the downloaded file, open it with Arduino IDE
+Connect your Arduino Uno board, in menus, select "Tools - Board: Arduino Uno", and "Ports - /dev/cu.usb..."
+click "Verify", than "Upload" the software to your board.
+Note: KnowFlow software library is designed for the beginner level users. You don’t need to have rich experience on Arduino or software development. KnowFlow team packaged 7 software libraries to make it easier for you to enable different sensor features for your application. 
+Feel free to commit your software question via our wiki page on public lab or github.
+
+## How to build KnowFlow 
+
+https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
+
+
+
 
 ### Documents
 
