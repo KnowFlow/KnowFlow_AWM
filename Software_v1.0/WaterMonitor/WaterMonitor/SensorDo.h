@@ -27,20 +27,20 @@ public:
 	~SensorDo();
 
 public:
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新传感器数据
-	void update();
+	// update the sensor data
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValue();
 
 private:
 
 	String sensorstring = "";
-	
-	//do的数据
+
+	// do the data
 	double doValue;
 
 };

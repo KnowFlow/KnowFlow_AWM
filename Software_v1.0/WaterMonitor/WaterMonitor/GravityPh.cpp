@@ -28,8 +28,8 @@ samplingInterval(30),pHValue(0),voltage(0), sum(0)
 }
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化ph传感器
+// function name: setup ()
+// Function Description: Initializes the ph sensor
 //********************************************************************************************
 void GravityPh::setup()
 {
@@ -38,8 +38,8 @@ void GravityPh::setup()
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新传感器数值
+// function name: update ()
+// Function Description: Update the sensor value
 //********************************************************************************************
 void GravityPh::update()
 {
@@ -51,7 +51,7 @@ void GravityPh::update()
 		samplingTime = millis();
 		pHArray[pHArrayIndex++] = analogRead(this->phSensorPin);
 
-		if (pHArrayIndex == arrayLength)  // 5*20 = 100ms计算一次
+		if (pHArrayIndex == arrayLength)   // 5 * 20 = 100ms
 		{
 			pHArrayIndex = 0;
 			for (int i = 0; i < arrayLength; i++)
@@ -60,15 +60,15 @@ void GravityPh::update()
 			this->sum = 0;
 			voltage = averageVoltage*5.0 / 1024.0;
 			pHValue = 3.5*voltage + this->offset;
-		}	
-		
+		}
+
 	}
 }
 
 
 //********************************************************************************************
-// 函数名称: getValue()
-// 函数说明：返回传感器数据
+// function name: getValue ()
+// Function Description: Returns the sensor data
 //********************************************************************************************
 double GravityPh::getValue()
 {

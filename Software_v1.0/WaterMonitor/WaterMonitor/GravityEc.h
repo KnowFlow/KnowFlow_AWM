@@ -23,15 +23,15 @@
 #include "GravityTemperature.h"
 #include "ISensor.h"
 
-//extern GravityTemperature ecTemperature;
+// external GravityTemperature ecTemperature;
 
 class GravityEc:public ISensor
 {
 public:
-	//电导率传感器引脚
-	int ecSensorPin;   
+	// Conductivity sensor pin
+	int ecSensorPin;
 
-	//电导率数值
+	// Conductivity values
 	double ECcurrent;
 
 
@@ -39,37 +39,37 @@ public:
 	GravityEc(ISensor*);
 	~GravityEc();
 
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新传感器数据
-	void update();
+	// update the sensor data
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValue();
 
 private:
-	//指向温度传感器的指针
+	// point to the temperature sensor pointer
 	ISensor* ecTemperature = NULL;
 
-	
+
 	static const int numReadings = 5;
 	unsigned int readings[numReadings] = { 0 };      // the readings from the analog input
 	int index;
 	double sum;
 	unsigned long AnalogValueTotal;      // the running total
 	unsigned int AnalogAverage;
-	unsigned int averageVoltage;      
+	unsigned int averageVoltage;
 	unsigned long AnalogSampleTime;
 	unsigned long printTime;
-	unsigned long tempSampleTime;
-	unsigned long AnalogSampleInterval; 
+	unsigned  long tempSampleTime;
+	unsigned long AnalogSampleInterval;
 	unsigned long printInterval ;
 
-	//计算平均值
-	void calculateAnalogAverage();
+	// Calculate the average
+	void  c lcu la te He and Louise prepared verage ();
 
-	//计算电导率
+	// Calculate the conductivity
 	void calculateEc();
 };
 

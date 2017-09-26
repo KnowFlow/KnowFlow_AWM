@@ -21,10 +21,10 @@
 #define StartConvert 0
 #define ReadTemperature 1
 
-class GravityTemperature : public ISensor 
+class GravityTemperature : public ISensor
 {
 public:
-	//温度传感器引脚
+	// temperature sensor pin
 	int temperaturePin;
 	double temperature;
 
@@ -32,22 +32,22 @@ public:
 	GravityTemperature(int pin);
 	~GravityTemperature();
 
-	//初始化
-	void setup();
+	// initialization
+	void  setup ();
 
-	//更新传感器数据
-	void update();
+	// update the sensor data
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValue();
 
 private:
 
-	OneWire *oneWire;
-	unsigned long tempSampleInterval = 850;
-	unsigned long tempSampleTime;
+	OneWire * oneWire;
+	unsigned  long tempSampleInterval = 850 ;
+	unsigned  long tempSampleTime;
 
-	//解析温度数据
+	// Analyze temperature data
 	double TempProcess(bool ch);
 };
 

@@ -25,13 +25,13 @@
 #include "SdService.h"
 
 //********************************************************************************************
-// 函数名称: sensors[]
-// 函数说明：存放传感器的数组   
-// 参    数: 0  ph传感器  
-// 参    数: 1  温度值传感器   
-// 参    数: 2  溶解氧传感器 
-// 参    数: 3  电导率传感器 
-// 参    数: 4  氧化还原电位传感器 
+// function name: sensors []
+// Function Description: Store the array of sensors
+// Parameters: 0 ph sensor
+// Parameters: 1 temperature sensor
+// Parameters: 2 Dissolved oxygen sensor
+// Parameters: 3 Conductivity sensor
+// Parameters: 4 Redox potential sensor
 //********************************************************************************************
 
 GravitySensorHub::GravitySensorHub()
@@ -50,8 +50,8 @@ GravitySensorHub::GravitySensorHub()
 }
 
 //********************************************************************************************
-// 函数名称: ~GravitySensorHub()
-// 函数说明：析构函数，释放所有的传感器 
+// function name: ~ GravitySensorHub ()
+// Function Description: Destructor, frees all sensors
 //********************************************************************************************
 GravitySensorHub::~GravitySensorHub()
 {
@@ -66,8 +66,8 @@ GravitySensorHub::~GravitySensorHub()
 
 
 //********************************************************************************************
-// 函数名称: setup()
-// 函数说明：初始化所有传感器
+// function name: setup ()
+// Function Description: Initializes all sensors
 //********************************************************************************************
 void GravitySensorHub::setup()
 {
@@ -82,8 +82,8 @@ void GravitySensorHub::setup()
 
 
 //********************************************************************************************
-// 函数名称: update()
-// 函数说明：更新所有传感器数值
+// function name: update ()
+// Function Description: Updates all sensor values
 //********************************************************************************************
 void GravitySensorHub::update()
 {
@@ -97,14 +97,14 @@ void GravitySensorHub::update()
 }
 
 //********************************************************************************************
-// 函数名称: getValueBySensorNumber()
-// 函数说明：获取传感器数据
-// 参    数: 0  ph传感器  
-// 参    数: 1  温度值传感器   
-// 参    数: 2  溶解氧传感器 
-// 参    数: 3  电导率传感器 
-// 参    数: 4  氧化还原电位传感器 
-// 返 回 值: 返回获取的传感器数据
+// function name: getValueBySensorNumber ()
+// Function Description: Get the sensor data
+// Parameters: 0 ph sensor
+// Parameters: 1 temperature sensor
+// Parameters: 2 Dissolved oxygen sensor
+// Parameters: 3 Conductivity sensor
+// Parameters: 4 Redox potential sensor
+// Return Value: Returns the acquired sensor data
 //********************************************************************************************
 double GravitySensorHub::getValueBySensorNumber(int num)
 {

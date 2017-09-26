@@ -25,16 +25,16 @@
 class GravityOrp:public ISensor
 {
 public:
-	//orp传感器引脚
+	// orp sensor pin
 	int orpSensorPin;
 
-	//电压值
+	// voltage value
 	double voltage;
 
-	//校准偏移量
+	// Calibrate the offset
 	float offset;
 private:
-	//orp值
+	// orp value
 	double orpValue;
 
 
@@ -50,13 +50,13 @@ public:
 	GravityOrp();
 	~GravityOrp();
 
-	//初始化传感器
-	void setup();
+	// initialize the sensor
+	void  setup ();
 
-	//更新传感器数据
-	void update();
+	// update the sensor data
+	void  update ();
 
-	//获取传感器数据
+	// Get the sensor data
 	double getValue();
 };
 
