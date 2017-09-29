@@ -33,11 +33,18 @@ Email addr - @ShanHe
 ## KnowFlow Firmware
 
 Download Arduino IDE
+
 Download Knowflow code from KnowFlow github
+
 find "WaterMonitor.ino" from the downloaded file, open it with Arduino IDE
+
 Connect your Arduino Uno board, in menus, select "Tools - Board: Arduino Uno", and "Ports - /dev/cu.usb..."
+
 click "Verify", than "Upload" the software to your board.
-Note: KnowFlow software library is designed for the beginner level users. You don’t need to have rich experience on Arduino or software development. KnowFlow team packaged 7 software libraries to make it easier for you to enable different sensor features for your application. 
+
+Note: KnowFlow software library is designed for the beginner level users. 
+You don’t need to have rich experience on Arduino or software development. 
+KnowFlow team packaged 7 software libraries to make it easier for you to enable different sensor features for your application. 
 Feel free to commit your software question via our wiki page on public lab or github.
 
 ## How to build KnowFlow 
@@ -49,7 +56,9 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 - support DO Senser from DFRobot.
 - add the video tutorial.
 - Website.
+- Modify the construction of the files system.
 - other issues.
+
 
 ### Documents
 
@@ -58,6 +67,9 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
  * [application:非洲茶园水质调研][17]
  * [application:Willow Creek Water Quality Monitoring][18]
 
+##License
+
+All KnowFlow related materials are released under the [CC's NonCommercial (NC) licenses][25]
  
 
 
@@ -85,3 +97,4 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
   [22]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Schematic.pdf
   [23]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Layout.pdf
   [24]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Datasheet.zip
+  [25]:
