@@ -1,3 +1,5 @@
+
+
 # KnowFlow - an open source river quality meter with Arduino
 
 KnowFlow is an open source water monitoring device and an education program.
@@ -60,42 +62,21 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 - other issues.
 
 
-### Documents
+## Documents
 
- * [tutorial][15]
- * [GreenSeed online courses][16]
- * [application:非洲茶园水质调研][17]
- * [application:Willow Creek Water Quality Monitoring][18]
+ * [Tutorial][1]
+ * [GreenSeed online courses][2]
+ * [Application:非洲茶园水质调研][3]
+ * [Application:Willow Creek Water Quality Monitoring][4]
 
 ## License
 
-All KnowFlow related materials are released under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)] [25]
+All KnowFlow related materials are released under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][5]
  
 
 
-  [1]: https://www.dfrobot.com/product-1071.html
-  [2]: https://www.dfrobot.com/product-489.html
-  [3]: https://www.dfrobot.com/product-1190.html
-  [4]: https://www.dfrobot.com/product-770.html
-  [5]: https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG
-  [6]: https://www.dfrobot.com/product-1044.html
-  [7]: https://www.dfrobot.com/product-1025.html
-  [8]: https://www.dfrobot.com/product-1123.html
-  [9]: https://www.dfrobot.com/product-1009.html
-  [10]: https://www.dfrobot.com/product-1600.html
-  [11]: https://www.dfrobot.com/product-875.html
-  [12]: https://www.dfrobot.com/product-1621.html
-  [13]: https://www.dfrobot.com/product-1190.html
-  [14]: https://github.com/KnowFlow/KnowFlow_AWM
-  [15]: https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
-  [16]: http://blog.sina.com.cn/s/blog_9f86b6d50102w9m1.html
-  [17]: http://www.dfrobot.com.cn/community/thread-26733-1-1.html
-  [18]: https://publiclab.org/notes/MadTinker/07-31-2017/willow-creek-water-quality-monitoring
-  [19]: https://www.dfrobot.com/wiki/index.php/PH_meter%28SKU:_SEN0161%29
-  [20]: https://www.dfrobot.com/wiki/index.php/Analog_EC_Meter_SKU:DFR0300
-  [21]: https://www.dfrobot.com/wiki/index.php/Gravity:_I2C_SD2405_RTC_Module_SKU:_DFR0469
-  [22]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Schematic.pdf
-  [23]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Layout.pdf
-  [24]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Datasheet.zip
-  [25]:https://creativecommons.org/licenses/by-nc-sa/4.0/
-  
+  [1]: https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
+  [2]: http://blog.sina.com.cn/s/blog_9f86b6d50102w9m1.html
+  [3]: http://www.dfrobot.com.cn/community/thread-26733-1-1.html
+  [4]: https://publiclab.org/notes/MadTinker/07-31-2017/willow-creek-water-quality-monitoring
+  [5]: https://creativecommons.org/licenses/by-nc-sa/4.0/
