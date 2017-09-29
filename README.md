@@ -69,7 +69,7 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 
 ## License
 
-All KnowFlow related materials are released under the [https://creativecommons.org/licenses/by-nc-sa/4.0/][25]
+All KnowFlow related materials are released under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)] [25]
  
 
 
