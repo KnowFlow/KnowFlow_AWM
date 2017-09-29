@@ -30,7 +30,7 @@ The size, modal, drawings, and other specifications of the materials can be foun
 We are still working with DFRobot team to release a KnowFlow starter kit, which will be available in next several months. If you’re interested in our product. Please contact with us via email. 
 Email addr - @ShanHe
 
-## KnowFlow Software
+## KnowFlow Firmware
 
 Download Arduino IDE
 Download Knowflow code from KnowFlow github
@@ -45,7 +45,11 @@ Feel free to commit your software question via our wiki page on public lab or gi
 https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 
 
-
+## To DO List
+- support DO Senser from DFRobot.
+- add the video tutorial.
+- Website.
+- other issues.
 
 ### Documents
 
