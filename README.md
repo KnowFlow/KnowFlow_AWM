@@ -67,9 +67,9 @@ https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
  * [application:非洲茶园水质调研][17]
  * [application:Willow Creek Water Quality Monitoring][18]
 
-##License
+## License
 
-All KnowFlow related materials are released under the [CC's NonCommercial (NC) licenses][25]
+All KnowFlow related materials are released under the [https://creativecommons.org/licenses/by-nc-sa/4.0/][25]
  
 
 
@@ -97,4 +97,5 @@ All KnowFlow related materials are released under the [CC's NonCommercial (NC) l
   [22]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Schematic.pdf
   [23]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Analog%20Isolation%20Module%28V1.0%29%20Layout.pdf
   [24]: https://github.com/Arduinolibrary/DFRobot_Gravity_Analog_Signal_Isolator_DFR0504/raw/master/Datasheet.zip
-  [25]:
+  [25]:https://creativecommons.org/licenses/by-nc-sa/4.0/
+  
