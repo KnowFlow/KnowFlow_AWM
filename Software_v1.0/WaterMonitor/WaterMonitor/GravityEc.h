@@ -67,7 +67,7 @@ private:
 	unsigned long printInterval ;
 
 	// Calculate the average
-	void  c lcu la te He and Louise prepared verage ();
+  void calculateAnalogAverage();
 
 	// Calculate the conductivity
 	void calculateEc();

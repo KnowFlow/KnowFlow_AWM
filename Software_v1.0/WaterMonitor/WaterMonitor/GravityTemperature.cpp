@@ -44,7 +44,7 @@ void GravityTemperature::setup()
 //********************************************************************************************
 void GravityTemperature::update()
 {
-	if ( millis () - tempSampleTime> = tempSampleInterval)
+	if ( millis () - tempSampleTime >= tempSampleInterval)
 	{
 		tempSampleTime = millis ();
 		temperature = TempProcess(ReadTemperature);  // read the current temperature from the  DS18B20
