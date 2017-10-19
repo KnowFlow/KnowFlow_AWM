@@ -103,7 +103,7 @@ void loop() {
 
 
 
-/ * ***************************** Print the relevant debugging information ************** ************ * /
+//* ***************************** Print the relevant debugging information ************** ************ * /
 // Note: Arduino M0 need to replace Serial with SerialUSB when printing debugging information
 
 // ************************* Serial debugging ******************

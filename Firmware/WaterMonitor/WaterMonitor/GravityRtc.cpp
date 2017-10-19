@@ -168,7 +168,7 @@ void GravityRtc::WriteTimeOff(void)
 }
 
 
-/ * ************************************ Test Print Code ********* ************************* * /
+// * ************************************ Test Print Code ********* ************************* * /
 //Serial.print("Year = ");//year
 //Serial.print(rtc.year);
 //Serial.print("   Month = ");//month
