@@ -1,4 +1,5 @@
 
+This branch is for ungoing development
 
 # KnowFlow - an open source river quality meter with Arduino
 
