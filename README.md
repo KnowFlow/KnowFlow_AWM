@@ -53,6 +53,12 @@ Feel free to commit your software question via our wiki page on public lab or gi
 
 https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 
+## About Branch
+We have 3 Branch
+master is for the reales vision.
+devlop is for the research vision. It will have some new feature, something like IOT, new sensor, etc, but will not fully tested.
+test is for the learning github, so we will delete when we know how to use github.
+We are newbee with github, please forgive us some stupid movement.
 
 ## To DO List
 - support DO Senser from DFRobot.
