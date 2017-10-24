@@ -58,19 +58,30 @@ We have 3 Branch.
 
 master is for the reales vision.
 
-devlop is for the research vision. It will have some new feature, something like IOT, new sensor, etc, but will not fully tested.
+development is for the research vision. It will have some new feature, something like IOT, new sensor, etc, but will not fully tested.
 
 test is for the learning github, so we will delete when we know how to use github.
 
-We are newbee with github, please forgive us some stupid movement.
+We are newbee with github, please forgive us some stupid movement. And any suggestion is welcome!
 
 
 ## To DO List
-- support DO Senser from DFRobot.
-- add the video tutorial.
-- Website.
-- Modify the construction of the files system.
-- other issues.
+- [ ] support DO Senser from DFRobot.
+- [ ] add the yotube video tutorial.
+- [ ] Website setup. www.knowflow.org
+- [x] Modify the construction of the files system.
+- [ ] IOT feature.
+
+## Contact
+If you have some thing to know please find the email address below.
+
+Rockets <Rockets.xia@dfrobot.com>
+
+He Shan  <heshan@ghub.org>
+
+Lauren <Lauren.pan@hotmail.com>
+
+Jason <jason.liang@dfrobot.com>
 
 
 ## Documents
