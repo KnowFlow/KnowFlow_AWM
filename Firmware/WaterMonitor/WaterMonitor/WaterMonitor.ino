@@ -26,6 +26,7 @@
  * ORP : A3
  * RTC : I2C
  * DO  : Serial port Rx(0),Tx(1)
+ * GravityDO：A4
  * temperature:D5
  *
  * SD card attached to SPI bus as follows:
