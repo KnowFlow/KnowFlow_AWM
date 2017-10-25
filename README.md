@@ -49,6 +49,14 @@ You don’t need to have rich experience on Arduino or software development.
 KnowFlow team packaged 7 software libraries to make it easier for you to enable different sensor features for your application. 
 Feel free to commit your software question via our wiki page on public lab or github.
 
+## FAQ
+1. Q:why I can't not verify the code.
+A:Some user may not verify the code.
+It's maybe the IDE lack of some library, the most possiable is OneWire. 
+Please find library OneWire in Sketch->include library->manage libraries, searth OneWire then install it.
+It should be solve the problem.
+
+
 ## How to build KnowFlow 
 
 https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
