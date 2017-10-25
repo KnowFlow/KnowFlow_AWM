@@ -21,7 +21,8 @@
 #include "GravityOrp.h"
 #include "GravityEc.h"
 #include "GravityTemperature.h"
-#include "SensorDo.h"
+//#include "SensorDo.h"
+#include "GravityDo.h"
 #include "SdService.h"
 
 //********************************************************************************************
@@ -43,7 +44,7 @@ GravitySensorHub::GravitySensorHub()
 
 	this->sensors[0] = new GravityPh();
 	this->sensors[1] = new GravityTemperature(5);
-	this->sensors[2] = new SensorDo();
+	this->sensors[2] = new GravityDo();
 	this->sensors[3] = new GravityEc(this->sensors[1]);
 	this->sensors[4] = new GravityOrp();
 
