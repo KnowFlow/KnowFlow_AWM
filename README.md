@@ -74,7 +74,7 @@ We are newbee with github, please forgive us some stupid movement. And any sugge
 
 
 ## To DO List
-- [ ] support DO Senser from DFRobot.
+- [x] support DO Senser from DFRobot.
 - [ ] add the yotube video tutorial.
 - [ ] Website setup. www.knowflow.org
 - [x] Modify the construction of the files system.
