@@ -49,12 +49,15 @@
 #include "SdService.h"
 #include "Debug.h"
 
+#include <LiquidCrystal.h>										//add a new library
+
 // clock module
 GravityRtc rtc;
 
 // sensor monitor
 GravitySensorHub sensorHub;
 SdService sdService = SdService(sensorHub.sensors);
+
 void setup() {
 	Serial.begin(9600);
 	rtc.setup();
