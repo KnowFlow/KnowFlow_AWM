@@ -50,7 +50,7 @@
 #include "Debug.h"
 
 //############################################################################################
-
+/*
 #include <LiquidCrystal.h>					 //COMMENT*** import a new library here
 LiquidCrystal lcd(8, 9, 4, 5, 6, 7);         //COMMENT*** select the pins used on the LCD panel
 											 //COMMENT*** define some values used by the panel and buttons
@@ -63,6 +63,7 @@ int adc_key_in  = 0;
 #define btnLEFT   3
 #define btnSELECT 4
 #define btnNONE   5
+*/
 //############################################################################################
 
 // clock module
