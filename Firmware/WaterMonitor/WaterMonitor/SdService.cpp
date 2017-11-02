@@ -80,7 +80,7 @@ void SdService::setup()
 	// write the file header
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
-		dataFile.println("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l0,ec(s/m),orp(mv)");
+		dataFile.println("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)");
 		dataFile.close();
 	}
 
