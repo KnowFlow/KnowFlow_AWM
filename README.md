@@ -61,6 +61,19 @@ It should be solve the problem.
 
 https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
 
+## contributors:
+
+1, Fork it!
+
+2, Create your feature branch: git checkout -b my-new-feature
+
+3, Commit your changes: git commit -am 'Add some feature'
+
+4, Push to the branch: git push origin my-new-feature
+
+5, Submit a pull request
+
+ 
 ## About Branch
 We have 3 Branch.
 
@@ -102,8 +115,11 @@ Jason <jason.liang@dfrobot.com>
 ## License
 
 All KnowFlow related materials are released under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][5]
- 
 
+##This project has benefited from the support from the following funders:
+
+* GreenSeed Foundation
+* Mushroom Cloud Maker Space
 
   [1]: https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter
   [2]: http://blog.sina.com.cn/s/blog_9f86b6d50102w9m1.html
