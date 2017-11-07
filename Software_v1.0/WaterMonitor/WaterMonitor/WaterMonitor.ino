@@ -26,19 +26,24 @@
  * ORP : A3
  * RTC : I2C
  * DO  : Serial port Rx(0),Tx(1)
+ * GravityDO：A4
  * temperature:D5
  *
  * SD card attached to SPI bus as follows:
  * Mega:  MOSI - pin 51, MISO - pin 50, CLK - pin 52, CS - pin 53
  * and pin #53 (SS) must be an output
  * M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
+ * LCD:  D4-D7(data transfer),D8(RS),D9(enable),A0(button)
  *
- * author  :  Jason(jason.ling@dfrobot.com)
- * version :  V1.0
- * date    :  2017-04-06
+ *
+ * author  :  Juncheng(zhujuncheng1021@163.com)
+ * version :  V1.5
+ * date    :  2017-11-06
  **********************************************************************/
 
+
 #include <SPI.h>
+#include <EEPROM.h>
 #include <SD.h>
 #include <Wire.h>
 #include <Arduino.h>
@@ -48,6 +53,9 @@
 #include "OneWire.h"
 #include "SdService.h"
 #include "Debug.h"
+#include <LiquidCrystal.h>
+
+
 
 // clock module
 GravityRtc rtc;
@@ -55,11 +63,62 @@ GravityRtc rtc;
 // sensor monitor
 GravitySensorHub sensorHub;
 SdService sdService = SdService(sensorHub.sensors);
+
+// select the pins used on the LCD panel
+LiquidCrystal lcd(8, 9, 4, 5, 6, 7); 
+
+// define some values used by the panel and buttons
+int lcd_key     = 0;
+int adc_key_in  = 0;
+
+#define btnRIGHT  0
+#define btnUP     1
+#define btnDOWN   2
+#define btnLEFT   3
+#define btnSELECT 4
+#define btnNONE   5
+
+//function for button issues
+
+int read_LCD_buttons(){               // read the buttons
+    adc_key_in = analogRead(0);       // read the value from the sensor 
+
+    // my buttons when read are centered at these valies: 0, 144, 329, 504, 741
+    // we add approx 50 to those values and check to see if we are close
+    // We make this the 1st option for speed reasons since it will be the most likely result
+
+    if (adc_key_in > 1000) return btnNONE; 
+
+    // For V1.1 us this threshold
+    if (adc_key_in < 50)   return btnRIGHT;  
+    if (adc_key_in < 250)  return btnUP; 
+    if (adc_key_in < 450)  return btnDOWN; 
+    if (adc_key_in < 650)  return btnLEFT; 
+    if (adc_key_in < 850)  return btnSELECT;  
+
+   // For V1.0 comment the other threshold and use the one below:
+   /*
+     if (adc_key_in < 50)   return btnRIGHT;  
+     if (adc_key_in < 195)  return btnUP; 
+     if (adc_key_in < 380)  return btnDOWN; 
+     if (adc_key_in < 555)  return btnLEFT; 
+     if (adc_key_in < 790)  return btnSELECT;   
+   */
+
+    return btnNONE;                // when all others fail, return this.
+}
+
+
 void setup() {
 	Serial.begin(9600);
 	rtc.setup();
 	sensorHub.setup();
 	sdService.setup();
+// LCD update
+	lcd.begin(16, 2);               // start the library
+    lcd.setCursor(0,0);             // set the LCD cursor   position 
+    lcd.print("Push the buttons");  // print a simple message on the LCD
+
 
 }
 
@@ -82,6 +141,42 @@ void loop() {
 	sensorHub.update();
 	sdService.update();
 
+//Button test: return button status	on LCD
+    lcd.setCursor(9,1);             // move cursor to second line "1" and 9 spaces over
+    lcd.print(millis()/1000);       // display seconds elapsed since power-up
+
+    lcd.setCursor(0,1);             // move to the begining of the second line
+    lcd_key = read_LCD_buttons();   // read the buttons
+
+    switch (lcd_key){               // depending on which button was pushed, we perform an action
+
+       case btnRIGHT:{             //  push button "RIGHT" and show the word on the screen
+            lcd.print("RIGHT ");
+            break;
+       }
+       case btnLEFT:{
+             lcd.print("LEFT   "); //  push button "LEFT" and show the word on the screen
+             break;
+       }    
+       case btnUP:{
+             lcd.print("UP    ");  //  push button "UP" and show the word on the screen
+             break;
+       }
+       case btnDOWN:{
+             lcd.print("DOWN  ");  //  push button "DOWN" and show the word on the screen
+             break;
+       }
+       case btnSELECT:{
+             lcd.print("SELECT");  //  push button "SELECT" and show the word on the screen
+             break;
+       }
+       case btnNONE:{
+             lcd.print("NONE  ");  //  No action  will show "None" on the screen
+             break;
+       }
+    }
+
+    
 		// ************************* Serial debugging ******************
 //	if(millis() - updateTime > 1000)
 //  {
@@ -132,4 +227,3 @@ void loop() {
 //Serial.print(rtc.minute);
 //Serial.print("   Second = ");//second
 //Serial.println(rtc.second);
-
