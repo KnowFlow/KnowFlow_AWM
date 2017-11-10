@@ -59,7 +59,7 @@ GravitySensorHub sensorHub;
 SdService sdService = SdService(sensorHub.sensors);
 void setup() {
 	Serial.begin(9600);
-	rtc.setup();
+	//rtc.setup();
 	sensorHub.setup();
 	sdService.setup();
 
@@ -80,27 +80,25 @@ void setup() {
 unsigned long updateTime = 0;
 
 void loop() {
-	rtc.update();
+	//rtc.update();
 	sensorHub.update();
 	sdService.update();
 
-		// ************************* Serial debugging ******************
-//	if(millis() - updateTime > 1000)
-//  {
-//    updateTime = millis();
-//    Serial.print(F("ph= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(0));
-//    Serial.print(F("  Temp= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(1));
-//    Serial.print(F("  Do= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(2));
-//    Serial.print(F("  Ec= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(3));
-//    Serial.print(F("  Orp= "));
-//    Serial.println(sensorHub.getValueBySensorNumber(4));
-//  }
-
-
+	// ************************* Serial debugging ******************
+	//if(millis() - updateTime > 2000)
+	//{
+		/*updateTime = millis();
+		Serial.print(F("ph= "));
+		Serial.print(sensorHub.getValueBySensorNumber(0));
+		Serial.print(F("  Temp= "));
+		Serial.print(sensorHub.getValueBySensorNumber(1));
+		Serial.print(F("  Do= "));
+		Serial.print(sensorHub.getValueBySensorNumber(2));
+		Serial.print(F("  Ec= "));
+		Serial.print(sensorHub.getValueBySensorNumber(3));
+		Serial.print(F("  Orp= "));
+		Serial.println(sensorHub.getValueBySensorNumber(4));*/
+	//}
 }
 
 
