@@ -7,11 +7,11 @@ KnowFlow is an open source water monitoring device and an education program.
 ********************************************************************************
 CAUTION: THE BASELINE VERSION IS IN THE LIST
 
-## Environment Setup
+***************Environment Setup***************
 
 make sure Arduino IDE is installed
 
-### How to Run The Baseline Model
+***************How to Run The Baseline Model***************
 
 * Download the zip file and find the Firmware_Baseline folder
 
