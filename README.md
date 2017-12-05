@@ -7,13 +7,14 @@ KnowFlow is an open source water monitoring device and an education program.
 ********************************************************************************
 CAUTION: THE BASELINE VERSION IS IN THE LIST
 
-Download the zip file and replace the Firmwire with Firmware_Baseline in the following instruction
+*Download the zip file 
 
-http://mc.dfrobot.com.cn/forum.php?mod=viewthread&tid=29686&highlight=Knowflow
+*unzip the Firmware_Baseline.zip
 
-*put the content of library folder into /Document/Arduino/libraries/
+*put the content of Firmware_Baseline/Firmware/library folder into /Document/Arduino/libraries/
 
-*WaterMonitor.ino is in the Firmware_Baseline
+*RUN WaterMonitor.ino on Arduino IDE, which is in the Firmware_Baseline/Firmware/WaterMonitor/
+
 
 ![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
 
