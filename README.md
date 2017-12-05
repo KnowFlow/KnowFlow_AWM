@@ -6,6 +6,7 @@ KnowFlow is an open source water monitoring device and an education program.
 
 ********************************************************************************
 CAUTION: THE BASELINE VERSION IS IN THE LIST
+
 Download the zip file and replace the Firmwire with Firmware_Baseline in the following instruction
 
 ![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
