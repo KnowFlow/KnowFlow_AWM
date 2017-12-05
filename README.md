@@ -7,24 +7,6 @@ KnowFlow is an open source water monitoring device and an education program.
 ********************************************************************************
 CAUTION: THE BASELINE VERSION IS IN THE LIST
 
-***************Environment Setup***************
-
-make sure Arduino IDE is installed
-
-***************How to Run The Baseline Model***************
-
-* Download the zip file and find the Firmware_Baseline folder
-
-* In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
-
-* Take down the TX RX pin 
-
-* Upload WaterMonitor.ino
-
-* Plug in the TX RX pin
-
-Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
-
 
 ![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
 
