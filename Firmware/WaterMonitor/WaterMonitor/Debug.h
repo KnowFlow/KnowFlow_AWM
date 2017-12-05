@@ -18,7 +18,6 @@
 **********************************************************************/
 
 #pragma once
-#include <string.h>
 
 //#define DEBUG_AVR
 //#define DEBUG_M0

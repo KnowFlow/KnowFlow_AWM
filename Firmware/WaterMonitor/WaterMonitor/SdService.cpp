@@ -39,14 +39,16 @@ const int CsPin = 4;
 
 #endif
 
+#define SDUPDATEDATATIME 30000
+
 #include "SdService.h"
-#include "string.h"
 #include <SPI.h>
 #include "Debug.h"
 #include "GravityRtc.h"
 
 extern GravityRtc rtc;
 String dataString = "";
+
 
 SdService :: SdService (ISensor * gravitySensor []): chipSelect (CsPin), sdDataUpdateTime ( 0 )
 {
@@ -64,23 +66,24 @@ SdService :: ~ SdService ()
 //********************************************************************************************
 void SdService::setup()
 {
-	Debug::println("Initializing SD card...");
+	Debug::println(F("Initializing SD card..."));
 
 	pinMode(SS, OUTPUT);
 
 	if (!SD.begin(chipSelect))
 	{
-		Debug::println("Card failed, or not present");
+		Debug::println(F("Card failed, or not present"));
 		// don't do anything more:
 		return;
 	}
-
-	Debug::println("card initialized.");
+	sdReady = true;
+	Debug::println(F("card initialized."));
 
 	// write the file header
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
-		dataFile.println("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l0,ec(s/m),orp(mv)");
+		//dataFile.println(F("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
+		dataFile.println(F("date,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
 		dataFile.close();
 	}
 
@@ -93,21 +96,21 @@ void SdService::setup()
 //********************************************************************************************
 void SdService::update()
 {
-	if (millis() - sdDataUpdateTime > 2000) //2000ms
+	if (sdReady && millis() - sdDataUpdateTime > SDUPDATEDATATIME) 
 	{
-
+		//Serial.println(F("Write Sd card"));	
 		dataString = "";
 		// Year Month Day Hours Minute Seconds
 		dataString += String(rtc.year,10);
-		dataString += ",";
+		dataString += "/";
 		dataString += String(rtc.month, 10);
-		dataString += ",";
+		dataString += "/";
 		dataString += String(rtc.day, 10);
-		dataString += ",";
+		dataString += "/";
 		dataString += String(rtc.hour, 10);
-		dataString += ",";
+		dataString += "/";
 		dataString += String(rtc.minute, 10);
-		dataString += ",";
+		dataString += "/";
 		dataString += String(rtc.second, 10);
 		dataString += ",";
 
