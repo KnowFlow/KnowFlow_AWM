@@ -15,6 +15,9 @@ CAUTION: THE BASELINE VERSION IS IN THE LIST
 
 *RUN WaterMonitor.ino on Arduino IDE, which is in the Firmware_Baseline/Firmware/WaterMonitor/
 
+(take down the TX RX pin while upload the code)
+Appendix: un-comment the serial debugging part to show the parameters in the serial monitor
+
 
 ![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
 
