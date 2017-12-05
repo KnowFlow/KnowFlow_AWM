@@ -24,12 +24,12 @@ For the education program, KnowFlow is a 8 weeks online course and a learning gr
 * Download Knowflow code
 * 打包下载 KnowFlow 代码
 * find "WaterMonitor.ino" from the downloaded file, open it with Arduino IDE
-* 解压并在⽂件夹中找到 WaterMonitor.ino, 在 Arduino IDE 中打开
+* 解压并在Firmware_Baseline⽂件夹中找到 WaterMonitor.ino, 在 Arduino IDE 中打开
 * Connect your Arduino Uno board, in menus, select "Tools - Board: Arduino Uno", and "Ports - /dev/cu.usb..."
-*将 Arduino 和电脑连接，菜单中，⼯具-开发板 选择“Arduino Uno”，端⼝选择类似“/dev/
+* 将 Arduino 和电脑连接，菜单中，⼯具-开发板 选择“Arduino Uno”，端⼝选择类似“/dev/
 cu.usb....”
 * click "Verify", than "Upload" the software to your board.
-*点击验证（对勾），然后再点击上传（右箭头），程序被烧录进 Arduino 主板中。
+* 点击验证（对勾），然后再点击上传（右箭头），程序被烧录进 Arduino 主板中。
 
 
 
