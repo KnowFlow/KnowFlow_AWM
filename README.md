@@ -34,4 +34,24 @@ For the device part, KnowFlow is designed for environmental activists, researche
 
 For the education program, KnowFlow is a 8 weeks online course and a learning group (launched on Greenseed Project platform). In which we will introduce the basic knowledge about water quality and indicators of water quality, Arduino and monitoring system, and show you how to build your own online monitor system based on arduino. Use Arduino as a master controller, and connected it to a variety of sensors. Except for the 5 parameters which are already included in the KnowFlow kits, you can add other environmental sensors on, such as carbon dioxide, ozone, dust, light, temperature, humidity sensors. Then use GPS and other communication module to connect all the data from distance. There will be step by step demos in the course to walk you through this learning process.
 
+***************Environment Setup***************
+
+make sure Arduino IDE is installed
+
+***************How to Run The Baseline Model***************
+
+* Download the zip file and find the Firmware_Baseline folder
+
+* In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
+
+* Take down the TX RX pin 
+
+* Upload WaterMonitor.ino
+
+* Plug in the TX RX pin
+
+Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
+
+
+
 This page is a collective information 
