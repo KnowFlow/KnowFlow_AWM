@@ -31,8 +31,6 @@ cu.usb....”
 * click "Verify", than "Upload" the software to your board.
 *点击验证（对勾），然后再点击上传（右箭头），程序被烧录进 Arduino 主板中。
 
-Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
-
 
 
 ***************************************
