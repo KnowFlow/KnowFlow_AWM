@@ -21,6 +21,8 @@ make sure Arduino IDE is installed
 
 * Upload WaterMonitor.ino
 
+* Plug in the TX RX pin
+
 Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
 
 
