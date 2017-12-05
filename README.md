@@ -4,12 +4,11 @@
 
 KnowFlow is an open source water monitoring device and an education program.
 
-![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
-
 ********************************************************************************
 CAUTION: THE BASELINE VERSION IS IN THE LIST
 Download the zip file and replace the Firmwire with Firmware_Baseline in the following instruction
 
+![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
 
 For the device part, KnowFlow is designed for environmental activists, researchers, students... anyone who wants to know the water quality using low cost and customized tools. It is based on arduino uno, currently can monitor 5 parameters: Temperature, pH, ORP, Electronic conductivities, Dissolved Oxygen, the data is stored on a micro SD card, or read directly on phone by bluetooth (except for Dissolved Oxygen). All the modules are easy to change or add. Most of the sensor used are from DFRobot and Atlas Scientific, which are the main 2 sensor suppliers for Arduino users.
 
