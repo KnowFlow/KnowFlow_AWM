@@ -12,6 +12,7 @@ Download the zip file and replace the Firmwire with Firmware_Baseline in the fol
 http://mc.dfrobot.com.cn/forum.php?mod=viewthread&tid=29686&highlight=Knowflow
 
 *put the content of library folder into /Document/Arduino/libraries/
+
 *WaterMonitor.ino is in the Firmware_Baseline
 
 ![](https://publiclab.org/system/images/photos/000/020/692/large/BOM.JPG)
