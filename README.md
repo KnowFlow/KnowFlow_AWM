@@ -17,7 +17,9 @@ make sure Arduino IDE is installed
 
 * In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
 
-* Take down the TX RX pin then upload WaterMonitor.ino
+* Take down the TX RX pin 
+
+* Upload WaterMonitor.ino
 
 Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
 
