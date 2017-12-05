@@ -20,7 +20,7 @@ For the education program, KnowFlow is a 8 weeks online course and a learning gr
 ***************How to Run The Baseline Model***************
 
 * Download Arduino IDE
-*下载 Arduino IDE
+* 下载 Arduino IDE
 * Download Knowflow code
 * 打包下载 KnowFlow 代码
 * find "WaterMonitor.ino" from the downloaded file, open it with Arduino IDE
