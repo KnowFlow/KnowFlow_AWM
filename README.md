@@ -22,18 +22,19 @@ make sure Arduino IDE is installed
 
 ***************How to Run The Baseline Model***************
 
-* Download the zip file and find the Firmware_Baseline folder
+* Download the zip file and find the Firmware_Baseline folder 下载并找到Firmware_Baseline文件夹
 
-* In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
+* In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
+用Arduino IDE 打开 Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/文件夹中的WaterMonitor.ino
+* Take down the TX RX pin 取下扩展板上的TX RX 接口的杜邦线/或直接取下扩展版
 
-* Take down the TX RX pin 
+* Upload WaterMonitor.ino through Micro USB wire 用Micro USB线烧录程序WaterMonitor.ino
 
-* Upload WaterMonitor.ino
-
-* Plug in the TX RX pin
+* Plug in the TX RX pin 插回TX RX 接头的杜邦线/或扩展版
 
 Appendix: un-comment the whole serial debugging part to show the parameters in the serial monitor
 
 
 
+***************************************
 This page is a collective information 
