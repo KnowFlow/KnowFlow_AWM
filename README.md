@@ -15,8 +15,6 @@ make sure Arduino IDE is installed
 
 * Download the zip file and find the Firmware_Baseline folder
 
-* put the content of Firmware_Baseline/Firmware/library folder into /Document/Arduino/libraries/
-
 * In the Firmware_Baseline/Firmware/WaterMonitor/WaterMonitor/   Open WaterMonitor.ino with Arduino IDE
 
 * Take down the TX RX pin then upload WaterMonitor.ino
