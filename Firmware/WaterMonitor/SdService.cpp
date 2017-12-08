@@ -39,12 +39,9 @@ const int CsPin = 4;
 
 #endif
 
-
-
-
+#define SDUPDATEDATATIME 30000
 
 #include "SdService.h"
-#include "string.h"
 #include <SPI.h>
 #include "Debug.h"
 #include "GravityRtc.h"
@@ -86,7 +83,7 @@ void SdService::setup()
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
 		//dataFile.println(F("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
-		dataFile.println(F("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
+		dataFile.println(F("date,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
 		dataFile.close();
 	}
 
@@ -99,7 +96,7 @@ void SdService::setup()
 //********************************************************************************************
 void SdService::update()
 {
-	if (sdReady && millis() - sdDataUpdateTime > 30000) 
+	if (sdReady && millis() - sdDataUpdateTime > SDUPDATEDATATIME) 
 	{
 		//Serial.println(F("Write Sd card"));	
 		dataString = "";
