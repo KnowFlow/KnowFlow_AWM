@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * SdService.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -39,9 +39,12 @@ const int CsPin = 4;
 
 #endif
 
-#define SDUPDATEDATATIME 30000
+
+
+
 
 #include "SdService.h"
+#include "string.h"
 #include <SPI.h>
 #include "Debug.h"
 #include "GravityRtc.h"
@@ -96,7 +99,7 @@ void SdService::setup()
 //********************************************************************************************
 void SdService::update()
 {
-	if (sdReady && millis() - sdDataUpdateTime > SDUPDATEDATATIME) 
+	if (sdReady && millis() - sdDataUpdateTime > 30000) 
 	{
 		//Serial.println(F("Write Sd card"));	
 		dataString = "";
