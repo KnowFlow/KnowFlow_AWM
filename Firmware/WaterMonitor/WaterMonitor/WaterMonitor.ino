@@ -40,16 +40,14 @@
  **********************************************************************/
 
 #include <SPI.h>
-#include <EEPROM.h>
 #include <SD.h>
 #include <Wire.h>
-#include <Arduino.h>
 #include "GravitySensorHub.h"
-#include <stdlib.h>
 #include "GravityRtc.h"
 #include "OneWire.h"
 #include "SdService.h"
 #include "Debug.h"
+#include <SoftwareSerial.h>
 
 // clock module
 GravityRtc rtc;
@@ -84,23 +82,21 @@ void loop() {
 	sensorHub.update();
 	sdService.update();
 
-		// ************************* Serial debugging ******************
-//	if(millis() - updateTime > 1000)
-//  {
-//    updateTime = millis();
-//    Serial.print(F("ph= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(0));
-//    Serial.print(F("  Temp= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(1));
-//    Serial.print(F("  Do= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(2));
-//    Serial.print(F("  Ec= "));
-//    Serial.print(sensorHub.getValueBySensorNumber(3));
-//    Serial.print(F("  Orp= "));
-//    Serial.println(sensorHub.getValueBySensorNumber(4));
-//  }
-
-
+	// ************************* Serial debugging ******************
+	//if(millis() - updateTime > 2000)
+	//{
+		/*updateTime = millis();
+		Serial.print(F("ph= "));
+		Serial.print(sensorHub.getValueBySensorNumber(0));
+		Serial.print(F("  Temp= "));
+		Serial.print(sensorHub.getValueBySensorNumber(1));
+		Serial.print(F("  Do= "));
+		Serial.print(sensorHub.getValueBySensorNumber(2));
+		Serial.print(F("  Ec= "));
+		Serial.print(sensorHub.getValueBySensorNumber(3));
+		Serial.print(F("  Orp= "));
+		Serial.println(sensorHub.getValueBySensorNumber(4));*/
+	//}
 }
 
 

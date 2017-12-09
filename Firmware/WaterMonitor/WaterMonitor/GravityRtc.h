@@ -47,16 +47,15 @@ public:
 
 	// update the sensor data
 	void  update ();
+	// read the clock data
+	void  readRtc();
+
+	// parse RTC data
+	void processRtc();
 
 
 private:
 	unsigned char date[7];
-
-	// read the clock data
-	void  readRtc ();
-
-	// parse RTC data
-	void processRtc();
 
 	// decimal to BCD
 	char decTobcd(char num);
