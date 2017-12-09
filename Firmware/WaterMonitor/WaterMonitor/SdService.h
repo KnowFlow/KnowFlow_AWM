@@ -51,14 +51,11 @@ private:
 	ISensor** gravitySensor;
 	//String dataString ;
 
-	bool sdReady = false;
-
 	// file handle
 	File dataFile;
 	unsigned long sdDataUpdateTime;
 
 	// Connect the string data
 	void connectString(double value);
-
 };
 

@@ -18,9 +18,6 @@
 *********************************************************************************************/
 
 #include "SensorDo.h"
-//#include "SoftwareSerial.h"
-
-//SoftwareSerial mySerial(10, 11);
 
 SensorDo::SensorDo()
 {
@@ -40,7 +37,6 @@ SensorDo::~SensorDo()
 void SensorDo::setup()
 {
 	sensorstring.reserve(30);
-	//mySerial.begin(9600);
 }
 
 
@@ -56,10 +52,7 @@ void SensorDo::update()
 		char inchar = (char)Serial.read();
 		this->sensorstring += inchar;
 		if (inchar == '\r')
-		{
 			sensorStringComplete = true;
-			//Serial.println("Do avaible");
-		}		
 	}
 	if (sensorStringComplete == true)
 	{
