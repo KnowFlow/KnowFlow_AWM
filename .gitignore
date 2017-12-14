@@ -1,0 +1,14 @@
+.vs/
+__vm/
+
+*.mdb  
+*.ldb  
+*.sln  
+*.config  
+*.vcxproj
+*.filters
+
+Debug/  
+Release/  
+obj/  
+
