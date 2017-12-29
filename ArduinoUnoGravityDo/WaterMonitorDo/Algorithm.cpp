@@ -2,7 +2,7 @@
 uint16_t readMedianValue(int* dataArray, uint16_t arrayLength)
 {
 	uint16_t i, j, tempValue;
-	// ÓÃÃ°Åİ·¨¶ÔÊı×é½øĞĞÅÅĞò
+	// ç”¨å†’æ³¡æ³•å¯¹æ•°ç»„è¿›è¡Œæ’åº
 	for (j = 0; j < arrayLength - 1; j++)
 	{
 		for (i = 0; i < arrayLength - 1 - j; i++)
@@ -15,15 +15,15 @@ uint16_t readMedianValue(int* dataArray, uint16_t arrayLength)
 			}
 		}
 	}
-	// ¼ÆËãÖĞÖµ
+	// è®¡ç®—ä¸­å€¼
 	if ((arrayLength & 1) > 0)
 	{
-		// Êı×éÓĞÆæÊı¸öÔªËØ£¬·µ»ØÖĞ¼äÒ»¸öÔªËØ
+		// æ•°ç»„æœ‰å¥‡æ•°ä¸ªå…ƒç´ ï¼Œè¿”å›ä¸­é—´ä¸€ä¸ªå…ƒç´ 
 		tempValue = dataArray[(arrayLength - 1) / 2];
 	}
 	else
 	{
-		// Êı×éÓĞÅ¼Êı¸öÔªËØ£¬·µ»ØÖĞ¼äÁ½¸öÔªËØÆ½¾ùÖµ
+		// æ•°ç»„æœ‰å¶æ•°ä¸ªå…ƒç´ ï¼Œè¿”å›ä¸­é—´ä¸¤ä¸ªå…ƒç´ å¹³å‡å€¼
 		tempValue = (dataArray[arrayLength / 2] + dataArray[arrayLength / 2 - 1]) / 2;
 	}
 	return tempValue;

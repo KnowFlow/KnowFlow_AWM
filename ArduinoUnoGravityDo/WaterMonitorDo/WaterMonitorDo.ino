@@ -15,7 +15,7 @@
 * Software Environment: Arduino IDE 1.8.2
 * Software download link: https://www.arduino.cc/en/Main/Software
 *
-* Install the library file£º
+* Install the library fileï¼š
 * Copy the files from the github repository folder libraries to the libraries
 * in the Arduino IDE 1.8.2 installation directory
 *
@@ -26,7 +26,7 @@
 * ORP : A3
 * RTC : I2C
 * DO  : A0
-* GravityDO£ºA4
+* GravityDOï¼šA4
 * temperature:D5
 *
 * SD card attached to SPI bus as follows:
@@ -63,9 +63,12 @@ void setup() {
 	rtc.setup();
 	sensorHub.setup();
 
-	//ÉèÖÃÏàÓ¦´«¸ÐÆ÷Ð£×¼Êý¾ÝµÄÆ«ÒÆÁ¿
+	//è®¾ç½®ç›¸åº”ä¼ æ„Ÿå™¨æ ¡å‡†æ•°æ®çš„åç§»é‡
 	((GravityPh*)(sensorHub.sensors[phSensor]))->setOffset(PHOFFSET);
+	#ifdef SELECTEC
 	((GravityEc*)(sensorHub.sensors[ecSensor]))->setKValue(ECKVALUE);
+	#endif
+	
 
 	sdService.setup();
 

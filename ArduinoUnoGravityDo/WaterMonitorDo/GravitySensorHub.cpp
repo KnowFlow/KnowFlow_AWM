@@ -44,7 +44,11 @@ GravitySensorHub::GravitySensorHub()
 	this->sensors[phSensor] = new GravityPh();
 	this->sensors[temperatureSensor] = new GravityTemperature(TEMPPIN);
 	this->sensors[doSensor] = new GravityDo();
-	this->sensors[ecSensor] = new GravityEc();
+	#ifdef SELECTEC
+		this->sensors[ecSensor] = new GravityEc();
+	#else
+		this->sensors[tdsSensor] = new GravityTDS();
+	#endif
 	this->sensors[orpSensor] = new GravityOrp();
 }
 
