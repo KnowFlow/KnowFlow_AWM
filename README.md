@@ -89,10 +89,12 @@ We are newbee with github, please forgive us some stupid movement. And any sugge
 
 ## To DO List
 - [x] support DO Senser from DFRobot.
-- [ ] add the yotube video tutorial.
+- [ ] add youtube video tutorial.
 - [ ] Website setup. www.knowflow.org
 - [x] Modify the construction of the files system.
 - [ ] IOT feature.
+- [ ] Calibration function
+- [ ] Low power function
 
 ## Contact
 If you have some thing to know please find the email address below.
