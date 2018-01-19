@@ -60,6 +60,7 @@ SdService sdService = SdService(sensorHub.sensors);
 void setup() {
 		
 	Serial.begin(9600);
+	//rtc自动获取电脑系统时间来初始化RTC模块
 	rtc.setup();
 	sensorHub.setup();
 
