@@ -70,7 +70,7 @@ void GravityDo::update()
 	}
 
 	this->_averageVoltage = readMedianValue(analogBuffer, ARRAYLENGTH) * (float)this->_vref / 1024.0; // read the value more stable by the median filtering algorithm
-	this->_doValue = pgm_read_float_near(&SaturationValueTab[0] + (int)(this->_saturationDoTemperature + 0.5)) * this->_averageVoltage / this->_saturationDoVoltage;  //calculate the do value, doValue = Voltage / this->_saturationDoVoltage * SaturationDoValue(with temperature compensation)
+	this->_doValue = pgm_read_float_near(&SaturationValueTab[0] + (int)(this->_temperature + 0.5)) * this->_averageVoltage / this->_saturationDoVoltage;  //calculate the do value, doValue = Voltage / this->_saturationDoVoltage * SaturationDoValue(with temperature compensation)
 }
 
 double GravityDo::getValue()
