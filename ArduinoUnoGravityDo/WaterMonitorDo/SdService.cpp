@@ -98,7 +98,7 @@ void SdService::update()
 	if (sdReady && millis() - sdDataUpdateTime > SDUPDATEDATATIME)
 	{
 		//Serial.println(F("Write Sd card"));
-		rtc.update();
+		rtc.read();
 
 		dataString = "";
 		// Year Month Day Hours Minute Seconds
