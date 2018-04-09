@@ -1,5 +1,6 @@
 .vs/
 __vm/
+.idea
 
 *.mdb  
 *.ldb  
@@ -7,6 +8,7 @@ __vm/
 *.config  
 *.vcxproj
 *.filters
+*.vscode/
 
 Debug/  
 Release/  
