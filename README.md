@@ -1,5 +1,7 @@
 
+
 This branch is for ongoing development
+
 
 # KnowFlow - an open source river quality meter with Arduino
 
@@ -80,6 +82,14 @@ for your application. Feel free to post your software questions on our wiki page
 The IDE may be missing a library, most often OneWire. 
 Install the missing library library from Sketch->include library->manage libraries. Search "OneWire" then install it.
 
+## FAQ
+1. Q:why I can't not verify the code.
+A:Some user may not verify the code.
+It's maybe the IDE lack of some library, the most possiable is OneWire. 
+Please find library OneWire in Sketch->include library->manage libraries, searth OneWire then install it.
+It should be solve the problem.
+
+
 ## How to build KnowFlow 
 Instructions are available [here.](https://publiclab.org/notes/shanlter/06-08-2017/knowflow-automatic-water-meter)
 
@@ -97,8 +107,10 @@ See this [tutorial.](https://help.github.com/articles/creating-a-pull-request/)
 **development** is the research version. It has experimental features that are not fully tested. For example, IOT
 integrations, new sensors, etc.
 
+
 **test** is for the team to practice with github. We will delete when we figure out how to use github. (We are newbees
 to github, so please forgive any stupid errors. Suggestions are welcome!) :)
+
 
 ## To DO List
 - [x] support DO Senser from DFRobot.
@@ -110,12 +122,14 @@ to github, so please forgive any stupid errors. Suggestions are welcome!) :)
 - [ ] Low power function
 
 ## Contact
+
 Email addresses for the KnowFlow team.
 
 * Rockets <Rockets.xia@dfrobot.com>
 * He Shan  <heshan@ghub.org>
 * Lauren <Lauren.pan@hotmail.com>
 * Jason <jason.liang@dfrobot.com>
+
 
 
 ## Documents
@@ -129,7 +143,7 @@ Email addresses for the KnowFlow team.
 
 All KnowFlow related materials are released under the [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)][5]
 
-##This project has benefited from the support from the following funders:
+## This project has benefited from the support from the following funders:
 
 * GreenSeed Foundation
 * Mushroom Cloud Maker Space
