@@ -32,6 +32,7 @@ void GravityRtc::setup()
 {
 	Wire.begin();
 	//自动获取电脑时间进行校准
+	//Automatically acquire computer time for calibration
     init(F(__DATE__), F(__TIME__));
 }
 
