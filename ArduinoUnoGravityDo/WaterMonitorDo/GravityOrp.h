@@ -28,6 +28,7 @@ class GravityOrp:public ISensor
 {
 public:
 	//orp传感器引脚
+
 	//orp sensor pin
 	int pin;
 
@@ -41,6 +42,7 @@ public:
 private:
 	//orp值
 	//orp value
+
 	double orpValue;
 
 	int orpArray[ARRAYLENGTH];
@@ -50,6 +52,7 @@ public:
 	~GravityOrp();
 
 	//初始化传感器
+
 	// Initialize the sensor
 	void setup();
 
@@ -59,6 +62,7 @@ public:
 
 	//获取传感器数据
 	// Get sensor data
+
 	double getValue();
 };
 

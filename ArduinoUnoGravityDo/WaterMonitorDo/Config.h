@@ -1,11 +1,14 @@
 #pragma once
 
 //串口打印开关
+
 //Serial print switch
+
 #define DEBUG_AVR
 //#define DEBUG_M0
 
 //传感器滤波数组的最大长度
+
 //The maximum length of the sensor filter array
 #define ARRAYLENGTH 10
 
@@ -19,6 +22,7 @@
 
 //传感器的引脚设置
 //Sensor pin settings
+
 #define DOPIN  A0
 #define ECPIN  A1
 #define TDSPIN A1
@@ -26,18 +30,22 @@
 #define ORPPIN A3
 #define TEMPPIN 5
 
+
 //设置传感器偏移量（校准数据
 //Set sensor offset (calibration data)
+
 #define PHOFFSET 0.12
 #define ECKVALUE 0.6
 
 
 //传感器最大个数
+
 //The maximum number of sensors
 #define SENSORCOUNT 5
 
 //传感器对应数组编号，ph=0，temperature=1...,最大编号为SENSORCOUNT-1
 //The sensor corresponds to the array number, ph=0, temperature=1..., the maximum number is SENSORCOUNT-1
+
 enum SensorNumber
 {
 	phSensor = 0,

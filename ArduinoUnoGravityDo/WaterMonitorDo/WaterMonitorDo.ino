@@ -61,12 +61,16 @@ void setup() {
 		
 	Serial.begin(9600);
 	//rtc自动获取电脑系统时间来初始化RTC模块
+
 	//Automatically acquire computer system time to initialize RTC module
+
 	rtc.setup();
 	sensorHub.setup();
 
 	//设置相应传感器校准数据的偏移量
+
 	//Set the offset of the corresponding sensor calibration data
+
 	((GravityPh*)(sensorHub.sensors[phSensor]))->setOffset(PHOFFSET);
 	#ifdef SELECTEC
 	((GravityEc*)(sensorHub.sensors[ecSensor]))->setKValue(ECKVALUE);

@@ -9,6 +9,7 @@ void setup() {
 
   //设置完时间后，请注释掉此行，以保证下次启动时，不会重置时间！！！！！！！
   //rtc.initRtc(2017,12,15,3,10,31,0);  //设置时间;2017/12/15，周三，10点31分0秒
+
   // After setting the time, please comment out this line to ensure that the next time you start, it will not reset the time! ! ! ! ! ! !
   // rtc.initRtc(2017,12,15,3,10,31,0); //setting time; 2017/12/15, Wednesday, 10:31:00:00
  
