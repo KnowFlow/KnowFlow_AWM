@@ -35,8 +35,6 @@ const int CsPin = 53;
 const int CsPin = 4;
 #endif
 
-
-
 #include "SdService.h"
 #include <SPI.h>
 #include "Debug.h"
@@ -45,6 +43,8 @@ const int CsPin = 4;
 #include "Debug.h"
 
 extern GravityRtc rtc;
+
+//Initialize variable to hold data
 String dataString = "";
 
 
@@ -65,8 +65,11 @@ SdService :: ~ SdService ()
 void SdService::setup()
 {
 	Debug::println("Initializing SD card...");
+
+	//Make sure SS pin is set to output
 	pinMode(SS, OUTPUT);
 
+	//Open communication with SD card
 	if (!SD.begin(chipSelect))
 	{
 		Debug::println("Card failed, or not present");
@@ -79,29 +82,30 @@ void SdService::setup()
 	// write the file header
 	dataFile = SD.open("sensor.csv", FILE_WRITE);
 	if (dataFile && dataFile.position() == 0) {
-		//dataFile.println(F("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
-		
+		Debug::println(F("Writing file header to SD"));
+		// dataFile.println(F("Year,Month,Day,Hour,Minues,Second,pH,temp(C),DO(mg/l),ec(s/m),orp(mv)"));
 		dataFile.println(F("date,pH,temp(C),DO(mg/l),ec(ms/cm),orp(mv)"));
 		dataFile.close();
 	}
-
 }
-
 
 //********************************************************************************************
 // function name: update ()
-// Function Description: Update the data in the SD card
+// Function Description: Update data and write to SD card
 //********************************************************************************************
 void SdService::update()
 {
-	//sdReady &&
+	//sdReady 
 	if (sdReady && millis() - sdDataUpdateTime > SDUPDATEDATATIME)
 	{
-		Debug::println("Writing to Sd card");
+		Debug::println("Writing time to Sd card");
+
+		//Update time from clock module
 		rtc.update();
 
-		dataString = "";
+		//add time to dataString
 		// Year Month Day Hours Minute Seconds
+		dataString = "";
 		dataString += String(rtc.year,10);
 		dataString += "/";
 		dataString += String(rtc.month, 10);
@@ -115,18 +119,18 @@ void SdService::update()
 		dataString += String(rtc.second, 10);
 		dataString += ",";
 
-		// write SD card, write data twice, to prevent a single write data caused by the loss of too large
+		// write time to SD card, write in two operations to keep write size small
 		dataFile = SD.open("sensor.csv", FILE_WRITE);
 		if (dataFile)
 		{
 			Debug::println(F("Writing Time to card"));
+			Debug::print(dataString);
 			dataFile.print(dataString);
 			dataFile.close();
-			Debug::print(dataString);
 		}
 
+		//Empty dataString and add sensor readings
 		dataString = "";
-
 		for (int i = 0; i < SENSORCOUNT; i++)
 		{
 			if (this->gravitySensor[i] != NULL)
@@ -134,21 +138,14 @@ void SdService::update()
 			else
 				connectString(0);
 		}
-		////ph
-		//if (this->gravitySensor[0] != NULL) {
-		//	connectString(this->gravitySensor[0]->getValue());
-		//}
-		//else
-		//	connectString(0);	
 
-		// write SD card
+		//Write sensor readings to SD card
 		dataFile = SD.open("sensor.csv", FILE_WRITE);
 		if (dataFile)
 		{
+			Debug::println(dataString);
 			dataFile.println(dataString);
 			dataFile.close();
-			Debug::println(dataString);
-
 		}
 		sdDataUpdateTime = millis();
 	}

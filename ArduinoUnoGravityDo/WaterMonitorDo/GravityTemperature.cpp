@@ -48,7 +48,7 @@ void GravityTemperature::update()
 	{
 		tempSampleTime = millis ();
 		temperature = TempProcess(ReadTemperature);  // read the current temperature from the  DS18B20
-		TempProcess(StartConvert);                   //after the reading,start the convert for next reading
+		TempProcess(StartConvert);                   //after the reading, start the convert for next reading
 	}
 }
 

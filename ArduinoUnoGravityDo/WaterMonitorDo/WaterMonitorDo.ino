@@ -90,7 +90,6 @@ void setup() {
 	//Check for SD card and configure datafile
 	Debug::println("sdService setup");
 	sdService.setup();
-
 }
 
 //Create variable to track time
@@ -105,38 +104,4 @@ void loop() {
 
 	//Write data to SD card
 	sdService.update();
-
-
-	// ************************* Serial debugging ******************
-	//if(millis() - updateTime > 2000)
-	//{
-	/*updateTime = millis();
-	Serial.print(F("ph= "));
-	Serial.print(sensorHub.getValueBySensorNumber(phSensor));
-	Serial.print(F("  Temp= "));
-	Serial.print(sensorHub.getValueBySensorNumber(temperatureSensor));
-	Serial.print(F("  Do= "));
-	Serial.print(sensorHub.getValueBySensorNumber(doSensor));
-	Serial.print(F("  Ec= "));
-	Serial.print(sensorHub.getValueBySensorNumber(ecSensor));
-	Serial.print(F("  Orp= "));
-	Serial.println(sensorHub.getValueBySensorNumber(orpSensor));*/
-	//}
 }
-
-
-//* ***************************** Print the relevant debugging information ************** ************ * /
-// Note: Arduino M0 need to replace Serial with SerialUSB when printing debugging information
-
-// ************************* Serial debugging ******************
-//Serial.print("ph= ");
-//Serial.print(sensorHub.getValueBySensorNumber(phSensor));
-//Serial.print("  Temp= ");
-//Serial.print(sensorHub.getValueBySensorNumber(temperatureSensor));
-//Serial.print("  Orp= ");
-//Serial.println(sensorHub.getValueBySensorNumber(doSensor));
-//Serial.print("  EC= ");
-//Serial.println(sensorHub.getValueBySensorNumber(ecSensor));
-
-
-
