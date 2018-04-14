@@ -21,6 +21,7 @@
 
 #pragma once
 #include <Arduino.h>
+#include "Debug.h"
 
 #define RTC_Address   0x32  //RTC_Address 
 
@@ -51,8 +52,7 @@ public:
 	void setup();
 
 	//Update sensor data
-	void read();
-	
+	void update();
 
 private:
 	uint8_t date[7];
@@ -60,7 +60,7 @@ private:
 	//Read RTC Time
 	void readRtc();
 
-	//Analysis RTC Time
+	//Analyze RTC Time
 	void processRtc();
 
 	//Decimal turn to BCD
@@ -71,6 +71,7 @@ private:
 
 	//adjust RTC
 	uint8_t dayOfTheWeek();
+
 	// number of days since 2000/01/01, valid for 2001..2099
  	uint16_t date2days(uint16_t y, uint8_t m, uint8_t d);
 	
