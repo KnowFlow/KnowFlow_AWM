@@ -30,6 +30,7 @@
 #include "ISensor.h"
 #include <SD.h>
 #include "string.h"
+#include "Debug.h"
 
 class SdService
 {
@@ -49,12 +50,13 @@ public:
 private:
 	// points to the pointer to the array of sensors
 	ISensor** gravitySensor;
-	//String dataString ;
 
+	//String dataString ;
 	bool sdReady = false;
 
 	// file handle
 	File dataFile;
+	
 	unsigned long sdDataUpdateTime;
 
 	// Connect the string data

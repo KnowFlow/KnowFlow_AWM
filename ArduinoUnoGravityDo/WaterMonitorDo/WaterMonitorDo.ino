@@ -49,54 +49,63 @@
 #include "GravityDo.h"
 #include "OneWire.h"
 #include "SdService.h"
+#include "Debug.h"
 
-// clock module
+// Alias clock module logic as rtc
 GravityRtc rtc;
 
-// sensor monitor
+// Alias sensor logic as sensorHub 
 GravitySensorHub sensorHub;
+
+// Alias SD logic as sdService applied to sensors
 SdService sdService = SdService(sensorHub.sensors);
 
 void setup() {
-		
+	
+	//Open communication at 9600 baud
 	Serial.begin(9600);
-	//rtc自动获取电脑系统时间来初始化RTC模块
-
-	//Automatically acquire computer system time to initialize RTC module
-
+	Debug::println("Serial begin");
+	
+	//initialize RTC module with computer time
+	Debug::println("rtc.setup");
 	rtc.setup();
+
+	//Reset and initialize sensors
+	Debug::println("sensorHub setup");
 	sensorHub.setup();
 
-	//设置相应传感器校准数据的偏移量
-
-	//Set the offset of the corresponding sensor calibration data
-
+	//Apply calibration offsets
+	//Calibrate pH
 	((GravityPh*)(sensorHub.sensors[phSensor]))->setOffset(PHOFFSET);
+	Debug::print("pH offset: ");
+	Debug::println(PHOFFSET);
+	
+	// Calibrate EC if present
 	#ifdef SELECTEC
 	((GravityEc*)(sensorHub.sensors[ecSensor]))->setKValue(ECKVALUE);
+	Debug::print("EC K Value: ");
+	Debug::println(ECKVALUE);
 	#endif
 	
-
+	//Check for SD card and configure datafile
+	Debug::println("sdService setup");
 	sdService.setup();
 
 }
 
-
-//********************************************************************************************
-// function name: sensorHub.getValueBySensorNumber (0)
-// Function Description: Get the sensor's values, and the different parameters represent the acquisition of different sensor data     
-// Parameters: 0 ph value  
-// Parameters: 1 temperature value    
-// Parameters: 2 Dissolved Oxygen
-// Parameters: 3 Conductivity
-// Parameters: 4 Redox potential
-// return value: returns a double type of data
-//********************************************************************************************
-
+//Create variable to track time
+unsigned long updateTime = 0;
 
 void loop() {
+	//Update time from clock module
+	rtc.update();
+
+	//Collect sensor readings
 	sensorHub.update();
+
+	//Write data to SD card
 	sdService.update();
+
 
 	// ************************* Serial debugging ******************
 	//if(millis() - updateTime > 2000)
@@ -129,21 +138,5 @@ void loop() {
 //Serial.print("  EC= ");
 //Serial.println(sensorHub.getValueBySensorNumber(ecSensor));
 
-
-// ************************************************************ time ********************** **********
-//Serial.print("   Year = ");//year
-//Serial.print(rtc.year);
-//Serial.print("   Month = ");//month
-//Serial.print(rtc.month);
-//Serial.print("   Day = ");//day
-//Serial.print(rtc.day);
-//Serial.print("   Week = ");//week
-//Serial.print(rtc.week);
-//Serial.print("   Hour = ");//hour
-//Serial.print(rtc.hour);
-//Serial.print("   Minute = ");//minute
-//Serial.print(rtc.minute);
-//Serial.print("   Second = ");//second
-//Serial.println(rtc.second);
 
 
