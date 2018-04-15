@@ -23,26 +23,22 @@
 #include <Arduino.h>
 #include "ISensor.h"
 #include "Config.h"
+#include "debug.h"
 
 class GravityOrp:public ISensor
 {
 public:
-	//orp传感器引脚
-
 	//orp sensor pin
 	int pin;
 
-	//电压值
 	//Voltage value
 	double voltage;
 
-	//校准偏移量
 	// Calibration offset
 	float offset;
-private:
-	//orp值
-	//orp value
 
+private:
+	//orp value
 	double orpValue;
 
 	int orpArray[ARRAYLENGTH];
@@ -51,18 +47,13 @@ public:
 	GravityOrp();
 	~GravityOrp();
 
-	//初始化传感器
-
 	// Initialize the sensor
 	void setup();
 
-	//更新传感器数据
 	//Update sensor data
 	void update();
 
-	//获取传感器数据
 	// Get sensor data
-
 	double getValue();
 };
 
