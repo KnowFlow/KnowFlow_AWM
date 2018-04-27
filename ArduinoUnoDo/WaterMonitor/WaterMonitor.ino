@@ -83,9 +83,9 @@ void loop() {
 	sdService.update();
 
 	// ************************* Serial debugging ******************
-	//if(millis() - updateTime > 2000)
-	//{
-		/*updateTime = millis();
+	if(millis() - updateTime > 2000)
+	{
+		updateTime = millis();
 		Serial.print(F("ph= "));
 		Serial.print(sensorHub.getValueBySensorNumber(0));
 		Serial.print(F("  Temp= "));
@@ -95,8 +95,8 @@ void loop() {
 		Serial.print(F("  Ec= "));
 		Serial.print(sensorHub.getValueBySensorNumber(3));
 		Serial.print(F("  Orp= "));
-		Serial.println(sensorHub.getValueBySensorNumber(4));*/
-	//}
+		Serial.println(sensorHub.getValueBySensorNumber(4));
+	}
 }
 
 
