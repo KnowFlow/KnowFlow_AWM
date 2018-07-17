@@ -126,7 +126,7 @@ to github, so please forgive any stupid errors. Suggestions are welcome!) :)
 Email addresses for the KnowFlow team.
 
 * Rockets <Rockets.xia@dfrobot.com>
-* He Shan  <heshan@ghub.org>
+* He Shan  <shanh0510@gmail.com>
 * Lauren <Lauren.pan@hotmail.com>
 * Jason <jason.liang@dfrobot.com>
 
