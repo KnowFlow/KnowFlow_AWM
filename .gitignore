@@ -1,0 +1,16 @@
+.vs/
+__vm/
+.idea
+
+*.mdb  
+*.ldb  
+*.sln  
+*.config  
+*.vcxproj
+*.filters
+*.vscode/
+
+Debug/  
+Release/  
+obj/  
+

@@ -1,0 +1,31 @@
+C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\WaterMonitor.cpp.o: \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\WaterMonitor.cpp \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/binary.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/WString.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Print.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Printable.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\variants\standard/pins_arduino.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\libraries\SPI/SPI.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\libraries\EEPROM/EEPROM.h \
+ C:\arduino-1.6.5\libraries\SD\src/SD.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/SdFat.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/Sd2Card.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/Sd2PinMap.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/SdInfo.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/FatStructs.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Print.h \
+ C:\arduino-1.6.5\libraries\SD\src/utility/SdFatUtil.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\libraries\Wire/Wire.h \
+ C:\arduino-1.6.5\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\GravitySensorHub.h \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\ISensor.h \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\GravityRtc.h \
+ C:\Users\Jason\Documents\Arduino\libraries\OneWire/OneWire.h \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\SdService.h \
+ C:\Users\Jason\AppData\Local\Temp\VMBuilds\WaterMonitor\uno\Release\Debug.h
