@@ -138,6 +138,7 @@ Email addresses for the KnowFlow team.
  * [GreenSeed online courses][2]
  * [Application:非洲茶园水质调研][3]
  * [Application:Willow Creek Water Quality Monitoring][4]
+ * [KnowFlow Special Design][6]
 
 ## License
 
@@ -153,3 +154,4 @@ All KnowFlow related materials are released under the [Attribution-NonCommercial
   [3]: http://www.dfrobot.com.cn/community/thread-26733-1-1.html
   [4]: https://publiclab.org/notes/MadTinker/07-31-2017/willow-creek-water-quality-monitoring
   [5]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  [6]:https://www.instructables.com/id/KnowFlow-Special-Design/
