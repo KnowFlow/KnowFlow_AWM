@@ -101,35 +101,3 @@ void loop() {
 	//}
 }
 
-
-
-//* ***************************** Print the relevant debugging information ************** ************ * /
-// Note: Arduino M0 need to replace Serial with SerialUSB when printing debugging information
-
-// ************************* Serial debugging ******************
-//Serial.print("ph= ");
-//Serial.print(sensorHub.getValueBySensorNumber(0));
-//Serial.print("  Temp= ");
-//Serial.print(sensorHub.getValueBySensorNumber(1));
-//Serial.print("  Orp= ");
-//Serial.println(sensorHub.getValueBySensorNumber(4));
-//Serial.print("  EC= ");
-//Serial.println(sensorHub.getValueBySensorNumber(3));
-
-
-// ************************************************************ time ********************** **********
-//Serial.print("   Year = ");//year
-//Serial.print(rtc.year);
-//Serial.print("   Month = ");//month
-//Serial.print(rtc.month);
-//Serial.print("   Day = ");//day
-//Serial.print(rtc.day);
-//Serial.print("   Week = ");//week
-//Serial.print(rtc.week);
-//Serial.print("   Hour = ");//hour
-//Serial.print(rtc.hour);
-//Serial.print("   Minute = ");//minute
-//Serial.print(rtc.minute);
-//Serial.print("   Second = ");//second
-//Serial.println(rtc.second);
-

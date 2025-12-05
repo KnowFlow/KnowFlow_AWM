@@ -12,11 +12,17 @@ KnowFlow is an open source water monitoring device and an education program.
 
 
 For the device part, KnowFlow is designed for environmental activists, researchers, students... anyone
-who wants to know the water quality using low cost and customized tools. It is based on arduino uno and 
+who wants to know the water quality using low cost and customized tools. It is based on Arduino Uno and 
 can currently monitor 5 parameters: Temperature, pH, ORP, Electrical conductivity and Dissolved Oxygen. 
 The data is stored on a micro SD card and can be read directly on phone by bluetooth (except for Dissolved Oxygen). 
 All the modules are easy to change or add. Most of the sensors used are from DFRobot and Atlas Scientific, 
 the main 2 sensor suppliers for Arduino users.
+
+### Supported Hardware Platforms
+- **Arduino Uno** (primary platform)
+- **Arduino Mega 2560**
+- **Arduino M0**
+- **ESP32** ✅ (see [ESP32 README](ArduinoESP32/README.md))
 
 ![](https://publiclab.org/system/images/photos/000/020/719/large/Lauren_Field_Test.jpg)
 
@@ -66,28 +72,100 @@ DFRobot also offers a [KnowFlow starter kit.](https://www.dfrobot.com/product-16
 * Spiral cable wrap 
 
 ## Installing KnowFlow Firmware
-KnowFlow is designed for beginners. You don’t need to have experience with Arduino or software development. 
-KnowFlow is packaged wtth supporting software libraries to make it easier for you to enable different sensor features 
+KnowFlow is designed for beginners. You don't need to have experience with Arduino or software development. 
+KnowFlow is packaged with supporting software libraries to make it easier for you to enable different sensor features 
 for your application. Feel free to post your software questions on our wiki page on public lab or github.
 
-1. Download Arduino IDE
-1. Download Knowflow code from [github](https://github.com/KnowFlow/KnowFlow_AWM)
-1. Open "WaterMonitor.ino" from the downloaded file with Arduino IDE
-1. Connect your Arduino Uno board
-1. Select Tools>Board: Arduino Uno and Tools>Ports: /dev/cu.usb...
-1. Click "Verify" then "Upload" the software to your board.
+### Firmware Versions
+
+This repository contains multiple firmware versions for different hardware configurations:
+
+#### 1. ArduinoUnoDo
+- **Location**: `ArduinoUnoDo/WaterMonitor/`
+- **DO Sensor**: Uses Serial port communication (Rx(0), Tx(1))
+- **Best for**: Atlas Scientific DO sensor or similar serial-based DO sensors
+- **Note**: DO sensor uses Serial port, which may conflict with USB debugging
+
+#### 2. ArduinoUnoGravityDo
+- **Location**: `ArduinoUnoGravityDo/WaterMonitorDo/`
+- **DO Sensor**: Uses analog pin A0 (Gravity DO sensor)
+- **Best for**: DFRobot Gravity DO sensor
+- **Features**: Includes calibration support for pH and EC sensors
+- **Recommended**: This is the most feature-complete version
+
+#### 3. ArduinoESP32
+- **Location**: `ArduinoESP32/WaterMonitorESP32/`
+- **DO Sensor**: Uses analog pin GPIO33 (Gravity DO sensor)
+- **Best for**: ESP32 development boards
+- **Features**: 
+  - Uses ESP32's 12-bit ADC for higher precision
+  - Compatible with all 5 sensors
+  - Ready for WiFi/IOT features (planned)
+- **Note**: Requires ESP32 board support in Arduino IDE
+
+#### 4. Firmware (Legacy)
+- **Location**: `Firmware/WaterMonitor/WaterMonitor/`
+- **Status**: Legacy version, contains compiled binaries
+- **Note**: Use for reference only
+
+### Installation Steps
+
+1. **Download Arduino IDE** (version 1.8.2 or later)
+   - Download link: https://www.arduino.cc/en/Main/Software
+
+2. **Download KnowFlow code**
+   ```bash
+   git clone https://github.com/KnowFlow/KnowFlow_AWM.git
+   ```
+
+3. **Choose the appropriate firmware version**
+   - For **ESP32**: Use `ArduinoESP32/WaterMonitorESP32/` (see [ESP32 README](ArduinoESP32/README.md))
+   - For **Gravity DO sensor** (Arduino Uno): Use `ArduinoUnoGravityDo/WaterMonitorDo/`
+   - For **Serial DO sensor** (Arduino Uno): Use `ArduinoUnoDo/WaterMonitor/`
+
+4. **Install required libraries**
+   - Copy libraries from `Firmware/libraries/` to your Arduino IDE libraries folder
+   - Or install OneWire library via Library Manager: Sketch → Include Library → Manage Libraries → Search "OneWire"
+
+5. **Configure your hardware**
+   - Edit `config.h` (or `Config.h`) to match your sensor pins and calibration values
+   - Enable/disable debug output by uncommenting `DEBUG_AVR` or `DEBUG_M0`
+
+6. **Upload to board**
+   - Open `WaterMonitor.ino` (or `WaterMonitorDo.ino`) in Arduino IDE
+   - Connect your Arduino Uno board
+   - Select Tools → Board: Arduino Uno
+   - Select Tools → Port: (your USB port)
+   - Click "Verify" then "Upload"
 
 ## FAQ
-**Why can't I verify the code.**  
-The IDE may be missing a library, most often OneWire. 
-Install the missing library library from Sketch->include library->manage libraries. Search "OneWire" then install it.
 
-## FAQ
-1. Q:why I can't not verify the code.
-A:Some user may not verify the code.
-It's maybe the IDE lack of some library, the most possiable is OneWire. 
-Please find library OneWire in Sketch->include library->manage libraries, searth OneWire then install it.
-It should be solve the problem.
+### Q: Why can't I verify the code?
+**A:** The IDE may be missing a library, most often OneWire. 
+Install the missing library from Sketch → Include Library → Manage Libraries. Search "OneWire" then install it.
+
+### Q: Which firmware version should I use?
+**A:** 
+- Use **ArduinoUnoGravityDo** if you have DFRobot Gravity DO sensor (recommended)
+- Use **ArduinoUnoDo** if you have Atlas Scientific or other serial-based DO sensors
+- Check your DO sensor documentation to determine which type you have
+
+### Q: How do I calibrate the sensors?
+**A:** 
+- Edit `config.h` (or `Config.h`) in your firmware directory
+- Set `PHOFFSET` for pH calibration offset
+- Set `ECKVALUE` for EC sensor K value
+- Re-upload the firmware after calibration
+
+### Q: Can I use both Serial DO and Gravity DO?
+**A:** No, you need to choose one firmware version based on your hardware. The two versions are incompatible due to different DO sensor interfaces.
+
+### Q: How do I enable debug output?
+**A:** 
+- Open `config.h` (or `Config.h`)
+- Uncomment `#define DEBUG_AVR` for Arduino Uno/Mega
+- Or uncomment `#define DEBUG_M0` for Arduino M0
+- Re-upload the firmware
 
 
 ## How to build KnowFlow 
@@ -113,12 +191,15 @@ to github, so please forgive any stupid errors. Suggestions are welcome!) :)
 
 
 ## To DO List
-- [x] support DO Senser from DFRobot.
-- [ ] add youtube video tutorial.
-- [ ] Website setup. www.knowflow.org
-- [x] Modify the construction of the files system.
-- [ ] IOT feature.
-- [ ] Calibration function
+- [x] Support DO Sensor from DFRobot
+- [x] Modify the construction of the files system
+- [x] Code cleanup and configuration unification
+- [ ] Add YouTube video tutorial
+- [ ] Website setup (www.knowflow.org)
+- [ ] IOT feature
+- [x] Calibration function (partially implemented in ArduinoUnoGravityDo)
+- [x] ESP32 support (basic sensor functionality)
+- [ ] ESP32 WiFi/IOT features
 - [ ] Low power function
 
 ## Contact

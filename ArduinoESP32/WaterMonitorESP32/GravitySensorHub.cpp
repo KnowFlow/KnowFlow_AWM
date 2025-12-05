@@ -21,8 +21,8 @@
 #include "GravityOrp.h"
 #include "GravityEc.h"
 #include "GravityTemperature.h"
-#include "SensorDo.h"
-#include "config.h"
+#include "GravityDo.h"
+#include "Config.h"
 
 //********************************************************************************************
 // function name: sensors []
@@ -43,15 +43,13 @@ GravitySensorHub::GravitySensorHub()
 
 	this->sensors[phSensor] = new GravityPh();
 	this->sensors[temperatureSensor] = new GravityTemperature(TEMPPIN);
-	this->sensors[doSensor] = new SensorDo();
+	this->sensors[doSensor] = new GravityDo();
 	#ifdef SELECTEC
-		this->sensors[ecSensor] = new GravityEc(this->sensors[temperatureSensor]);
+		this->sensors[ecSensor] = new GravityEc();
 	#else
-		// Note: ArduinoUnoDo version uses GravityEc for both EC and TDS
-		this->sensors[ecSensor] = new GravityEc(this->sensors[temperatureSensor]);
+		this->sensors[tdsSensor] = new GravityTDS();
 	#endif
 	this->sensors[orpSensor] = new GravityOrp();
-
 }
 
 //********************************************************************************************

@@ -17,7 +17,7 @@
 
 #pragma once
 #include "ISensor.h"
-#include "config.h"
+#include "Config.h"
 /*
 sensors :
 0,ph

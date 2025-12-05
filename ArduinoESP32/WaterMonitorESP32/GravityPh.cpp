@@ -1,5 +1,5 @@
-﻿/*********************************************************************************************
-* SensorDo.cpp
+﻿/*********************************************************************
+* GravityPh.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
 * GitHub Link :https://github.com/DFRobot/watermonitor
@@ -8,35 +8,33 @@
 * the Free Software Foundation, either version 3 of the License, or
 * (at your option) any later version.
 *
-* Description:
+* Description:Monitoring water quality parameters ph
 *
-* Sensor driver pin：Serial,Rx(0),Tx(1)
-* 
+* Product Links：http://www.dfrobot.com.cn/goods-812.html
+*
+* Sensor driver pin：A2 (pin(A2))
+*
 * author  :  Jason(jason.ling@dfrobot.com)
 * version :  V1.0
-* date    :  2017-04-19
-*********************************************************************************************/
+* date    :  2017-04-07
+**********************************************************************/
 
-#include "SensorDo.h"
+#include "GravityPh.h"
+#include "ESP32ADC.h"
 
-SensorDo::SensorDo()
-{
+extern uint16_t readMedianValue(int* dataArray, uint16_t arrayLength);
 
-}
-
-
-SensorDo::~SensorDo()
+GravityPh::GravityPh():pin(PHPIN), offset(0.0f),pHValue(0)
 {
 }
-
 
 //********************************************************************************************
 // function name: setup ()
-// Function Description: Initializes the sensor
+// Function Description: Initializes the ph sensor
 //********************************************************************************************
-void SensorDo::setup()
+void GravityPh::setup()
 {
-	sensorstring.reserve(30);
+	pinMode(pin, INPUT);
 }
 
 
@@ -44,32 +42,37 @@ void SensorDo::setup()
 // function name: update ()
 // Function Description: Update the sensor value
 //********************************************************************************************
-void SensorDo::update()
+void GravityPh::update()
 {
-	static boolean sensorStringComplete = false;
-	if (Serial.available() > 0)
+
+	double averageVoltage = 0;
+
+	for (uint8_t i = 0; i < ARRAYLENGTH; i++)
 	{
-		char inchar = (char)Serial.read();
-		this->sensorstring += inchar;
-		if (inchar == '\r')
-		{
-			sensorStringComplete = true;
-		}		
+		// Use ESP32-compatible analogRead (returns Arduino-compatible 10-bit value)
+		pHArray[i] = analogReadESP32(this->pin);
+		delay(10);
 	}
-	if (sensorStringComplete == true)
-	{
-		if (isdigit(this->sensorstring[0]))
-			doValue = this->sensorstring.toFloat();
-		this->sensorstring = "";
-		sensorStringComplete = false;
-	}
+	averageVoltage = readMedianValue(pHArray, ARRAYLENGTH);
+	// ESP32: Convert to voltage (5.0V reference for compatibility with Arduino calibration)
+	averageVoltage = averageVoltage*5.0 / 1024.0;
+	pHValue = 3.5*averageVoltage + this->offset;
+
 }
+
 
 //********************************************************************************************
 // function name: getValue ()
 // Function Description: Returns the sensor data
 //********************************************************************************************
-double SensorDo::getValue()
+double GravityPh::getValue()
 {
-	return doValue;
+	return this->pHValue;
 }
+
+void GravityPh::setOffset(float offset)
+{
+	this->offset = offset;
+}
+
+
