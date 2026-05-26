@@ -1,4 +1,4 @@
-/*********************************************************************************************
+﻿/*********************************************************************************************
 * GravitySensorHub.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -21,8 +21,8 @@
 #include "GravityOrp.h"
 #include "GravityEc.h"
 #include "GravityTemperature.h"
-#include "SensorDo.h"
-#include "config.h"
+#include "GravityDo.h"
+#include "Config.h"
 
 //********************************************************************************************
 // function name: sensors []
@@ -41,17 +41,15 @@ GravitySensorHub::GravitySensorHub()
 		this->sensors[i] = NULL;
 	}
 
-	this->sensors[phSensor] = new GravityPh(&this->adc, DFR0553_PH_CHANNEL);
+	this->sensors[phSensor] = new GravityPh();
 	this->sensors[temperatureSensor] = new GravityTemperature(TEMPPIN);
-	this->sensors[doSensor] = new SensorDo();
+	this->sensors[doSensor] = new GravityDo();
 	#ifdef SELECTEC
-		this->sensors[ecSensor] = new GravityEc(this->sensors[temperatureSensor], &this->adc, DFR0553_EC_CHANNEL);
+		this->sensors[ecSensor] = new GravityEc();
 	#else
-		// Note: ArduinoUnoDo version uses GravityEc for both EC and TDS
-		this->sensors[ecSensor] = new GravityEc(this->sensors[temperatureSensor], &this->adc, DFR0553_EC_CHANNEL);
+		this->sensors[tdsSensor] = new GravityTDS();
 	#endif
-	this->sensors[orpSensor] = new GravityOrp(&this->adc, DFR0553_ORP_CHANNEL);
-
+	this->sensors[orpSensor] = new GravityOrp();
 }
 
 //********************************************************************************************
@@ -76,10 +74,6 @@ GravitySensorHub::~GravitySensorHub()
 //********************************************************************************************
 void GravitySensorHub::setup()
 {
-#if ENABLE_DFR0553_ADC
-	this->adc.setup(DFR0553_I2C_ADDRESS, DFR0553_FULL_SCALE_MV);
-#endif
-
 	for (size_t i = 0; i < SensorCount; i++)
 	{
 		if (this->sensors[i])

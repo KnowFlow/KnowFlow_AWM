@@ -1,4 +1,4 @@
-/*********************************************************************
+﻿/*********************************************************************
 * GravitySensorHub.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -17,8 +17,7 @@
 
 #pragma once
 #include "ISensor.h"
-#include "GravityDfr0553Adc.h"
-#include "config.h"
+#include "Config.h"
 /*
 sensors :
 0,ph
@@ -29,7 +28,6 @@ class GravitySensorHub
 {
 private:
 	static const int SensorCount = SENSORCOUNT;
-	GravityDfr0553Adc adc;
 
 public:
 	//********************************************************************************************
