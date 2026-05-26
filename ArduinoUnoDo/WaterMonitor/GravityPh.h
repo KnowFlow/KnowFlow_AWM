@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * GravityPh.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -22,6 +22,9 @@
 #pragma once
 #include <Arduino.h>
 #include "ISensor.h"
+
+class GravityDfr0553Adc;
+
 class GravityPh:public ISensor
 {
 public:
@@ -34,6 +37,8 @@ public:
 	// Take the sample interval
 	int samplingInterval;
 private:
+	GravityDfr0553Adc* adc;
+	uint8_t adcChannel;
 	static const int arrayLength = 5;
 	int pHArray [arrayLength];    // stores the average value of the sensor return data
 	double pHValue, voltage;
@@ -42,6 +47,7 @@ private:
 
 public:
 	GravityPh();
+	GravityPh(GravityDfr0553Adc* adc, uint8_t adcChannel);
 	~GravityPh() {};
 	// initialization
 	void  setup ();
@@ -52,4 +58,3 @@ public:
 	// Get the sensor data
 	double getValue();
 };
-
