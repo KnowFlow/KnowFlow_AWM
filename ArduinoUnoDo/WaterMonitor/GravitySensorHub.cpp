@@ -1,4 +1,4 @@
-﻿/*********************************************************************************************
+/*********************************************************************************************
 * GravitySensorHub.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -22,6 +22,7 @@
 #include "GravityEc.h"
 #include "GravityTemperature.h"
 #include "SensorDo.h"
+#include "config.h"
 
 //********************************************************************************************
 // function name: sensors []
@@ -40,11 +41,11 @@ GravitySensorHub::GravitySensorHub()
 		this->sensors[i] = NULL;
 	}
 
-	this->sensors[0] = new GravityPh();
+	this->sensors[0] = new GravityPh(&this->adc, DFR0553_PH_CHANNEL);
 	this->sensors[1] = new GravityTemperature(5);
 	this->sensors[2] = new SensorDo();
-	this->sensors[3] = new GravityEc(this->sensors[1]);
-	this->sensors[4] = new GravityOrp();
+	this->sensors[3] = new GravityEc(this->sensors[1], &this->adc, DFR0553_EC_CHANNEL);
+	this->sensors[4] = new GravityOrp(&this->adc, DFR0553_ORP_CHANNEL);
 
 }
 
@@ -70,6 +71,10 @@ GravitySensorHub::~GravitySensorHub()
 //********************************************************************************************
 void GravitySensorHub::setup()
 {
+#if ENABLE_DFR0553_ADC
+	this->adc.setup(DFR0553_I2C_ADDRESS, DFR0553_FULL_SCALE_MV);
+#endif
+
 	for (size_t i = 0; i < SensorCount; i++)
 	{
 		if (this->sensors[i])

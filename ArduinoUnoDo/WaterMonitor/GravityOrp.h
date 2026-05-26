@@ -1,4 +1,4 @@
-﻿/*********************************************************************************
+/*********************************************************************************
 * GravityOrp.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -22,6 +22,9 @@
 #pragma once
 #include <Arduino.h>
 #include "ISensor.h"
+
+class GravityDfr0553Adc;
+
 class GravityOrp:public ISensor
 {
 public:
@@ -34,6 +37,9 @@ public:
 	// Calibrate the offset
 	float offset;
 private:
+	GravityDfr0553Adc* adc;
+	uint8_t adcChannel;
+
 	// orp value
 	double orpValue;
 
@@ -48,6 +54,7 @@ private:
 
 public:
 	GravityOrp();
+	GravityOrp(GravityDfr0553Adc* adc, uint8_t adcChannel);
 	~GravityOrp();
 
 	// initialize the sensor
@@ -59,4 +66,3 @@ public:
 	// Get the sensor data
 	double getValue();
 };
-

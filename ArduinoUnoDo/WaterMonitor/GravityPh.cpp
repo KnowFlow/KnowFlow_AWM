@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * GravityPh.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -20,9 +20,18 @@
 **********************************************************************/
 
 #include "GravityPh.h"
+#include "GravityDfr0553Adc.h"
+#include "config.h"
 
 
-GravityPh::GravityPh():phSensorPin(A2), offset(0.0f), 
+GravityPh::GravityPh():phSensorPin(PH_PIN), offset(0.0f),
+adc(NULL), adcChannel(0),
+samplingInterval(30),pHValue(0),voltage(0), sum(0)
+{
+}
+
+GravityPh::GravityPh(GravityDfr0553Adc* adc, uint8_t adcChannel):phSensorPin(PH_PIN), offset(0.0f),
+adc(adc), adcChannel(adcChannel),
 samplingInterval(30),pHValue(0),voltage(0), sum(0)
 {
 }
@@ -59,6 +68,10 @@ void GravityPh::update()
 			averageVoltage = this->sum / arrayLength;
 			this->sum = 0;
 			voltage = averageVoltage*5.0 / 1024.0;
+			if (this->adc && this->adc->isAvailable())
+			{
+				voltage = this->adc->readMilliVolts(this->adcChannel, voltage * 1000.0f) / 1000.0f;
+			}
 			pHValue = 3.5*voltage + this->offset;
 		}
 
@@ -74,5 +87,3 @@ double GravityPh::getValue()
 {
 	return this->pHValue;
 }
-
-

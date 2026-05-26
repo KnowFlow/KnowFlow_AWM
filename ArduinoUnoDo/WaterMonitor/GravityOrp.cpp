@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * GravityOrp.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -20,9 +20,19 @@
 **********************************************************************/
 
 #include "GravityOrp.h"
+#include "GravityDfr0553Adc.h"
+#include "config.h"
 
 
-GravityOrp::GravityOrp():orpSensorPin(A3), voltage(5.0), offset(0), orpValue(0.0), sum(0)
+GravityOrp::GravityOrp():orpSensorPin(ORP_PIN), voltage(5.0), offset(0),
+adc(NULL), adcChannel(0),
+orpValue(0.0), sum(0)
+{
+}
+
+GravityOrp::GravityOrp(GravityDfr0553Adc* adc, uint8_t adcChannel):orpSensorPin(ORP_PIN), voltage(5.0), offset(0),
+adc(adc), adcChannel(adcChannel),
+orpValue(0.0), sum(0)
 {
 }
 
@@ -62,6 +72,12 @@ void GravityOrp::update()
 				this->sum += orpArray[i];
 			averageOrp = this->sum / arrayLength;
 			this->sum = 0;
+			if (this->adc && this->adc->isAvailable())
+			{
+				averageOrp = this->adc->readMilliVolts(this->adcChannel, averageOrp*this->voltage * 1000 / 1024);
+				this->orpValue = ((30 * this->voltage * 1000) - (75 * averageOrp)) / 75 - this->offset;
+				return;
+			}
 			//convert the analog value to orp according the circuit
 			this->orpValue = ((30 * this->voltage * 1000) - (75 * averageOrp*this->voltage * 1000 / 1024)) / 75 - this->offset;
 		}

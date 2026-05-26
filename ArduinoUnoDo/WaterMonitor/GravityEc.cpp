@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * GravityEc.cpp
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -20,15 +20,26 @@
 **********************************************************************/
 
 #include "GravityEc.h"
+#include "GravityDfr0553Adc.h"
 #include "Arduino.h"
+#include "config.h"
 
 
 
-GravityEc::GravityEc(ISensor* temp) :ecSensorPin(A1), ECcurrent(0), index(0), AnalogAverage(0),
+GravityEc::GravityEc(ISensor* temp) :ecSensorPin(EC_PIN), ECcurrent(0), index(0), AnalogAverage(0),
 AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),sum(0),
 tempSampleTime(0), AnalogSampleInterval(25),printInterval(700)
 {
 	this->ecTemperature = temp;
+}
+
+GravityEc::GravityEc(ISensor* temp, GravityDfr0553Adc* adc, uint8_t adcChannel) :ecSensorPin(EC_PIN), ECcurrent(0), index(0), AnalogAverage(0),
+AnalogValueTotal(0), averageVoltage(0), AnalogSampleTime(0), printTime(0),sum(0),
+tempSampleTime(0), AnalogSampleInterval(25),printInterval(700)
+{
+	this->ecTemperature = temp;
+	this->adc = adc;
+	this->adcChannel = adcChannel;
 }
 
 
@@ -102,6 +113,10 @@ void GravityEc::calculateEc()
 	{
 		printTime = millis();
 		averageVoltage = AnalogAverage*5000.0 / 1024.0;
+		if (this->adc && this->adc->isAvailable())
+		{
+			averageVoltage = this->adc->readMilliVolts(this->adcChannel, averageVoltage);
+		}
 		double TempCoefficient = 1.0 + 0.0185*(this->ecTemperature->getValue() - 25.0);    //temperature compensation formula: fFinalResult(25^C) = fFinalResult(current)/(1.0+0.0185*(fTP-25.0));
 
 		double CoefficientVolatge = (double)averageVoltage / TempCoefficient;

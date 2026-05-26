@@ -1,133 +1,203 @@
 /*********************************************************************
- * WaterMonitor.ino
+ * WaterMonitor.ino - Enhanced KnowFlow with IoT, Calibration, and Power Management
  *
- * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com)
- * GitHub Link :https://github.com/DFRobot/watermonitor
- * This Library is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ * Copyright (C)    2024   KnowFlow Team
+ * Enhanced version with WiFi/IoT connectivity, calibration, and power management
  *
  * Description:
- * This sample code is mainly used to monitor water quality
- * including ph, temperature, dissolved oxygen, ec and orp,etc.
+ * Enhanced water quality monitoring system with:
+ * - WiFi/IoT connectivity via MQTT
+ * - Automatic sensor calibration
+ * - Power management with sleep modes
+ * - Battery monitoring and solar charging support
+ * - Real-time data transmission
  *
- * Software Environment: Arduino IDE 1.8.2
- * Software download link: https://www.arduino.cc/en/Main/Software
- *
- * Install the library file：
- * Copy the files from the github repository folder libraries to the libraries
- * in the Arduino IDE 1.8.2 installation directory
- *
- * Hardware platform   : Arduino M0 Or Arduino Mega2560
- * Sensor pin:
- * EC  : A1
- * PH  : A2
- * ORP : A3
- * RTC : I2C
- * DO  : Serial port Rx(0),Tx(1)
- * GravityDO：A4
- * temperature:D5
- *
- * SD card attached to SPI bus as follows:
- * Mega:  MOSI - pin 51, MISO - pin 50, CLK - pin 52, CS - pin 53
- * and pin #53 (SS) must be an output
- * M0:   Onboard SPI pin,CS - pin 4 (CS pin can be changed)
- *
- * author  :  Jason(jason.ling@dfrobot.com)
- * version :  V1.0
- * date    :  2017-04-06
+ * Hardware platform   : Arduino Uno with WiFi shield or ESP32
+ * New features added  : IoT connectivity, calibration, power management
+ * version :  V2.0
+ * date    :  2024-07-21
  **********************************************************************/
 
 #include <SPI.h>
 #include <SD.h>
 #include <Wire.h>
+#include <EEPROM.h>
+#include "config.h"
+
+// Core modules
 #include "GravitySensorHub.h"
 #include "GravityRtc.h"
-#include "OneWire.h"
 #include "SdService.h"
 #include "Debug.h"
-#include <SoftwareSerial.h>
 
-// clock module
+// New enhanced features
+#include "IoTService.h"
+#include "CalibrationService.h"
+#include "PowerManager.h"
+
+// Clock module
 GravityRtc rtc;
 
-// sensor monitor
+// Sensor monitoring
 GravitySensorHub sensorHub;
 SdService sdService = SdService(sensorHub.sensors);
+
+// New services
+IoTService iotService;
+CalibrationService calibrationService(&sensorHub, &sdService);
+PowerManager powerManager;
+
+// System state
+unsigned long lastUpdateTime = 0;
+unsigned long updateInterval = 5000; // 5 seconds between readings
+bool systemInitialized = false;
+
 void setup() {
-	Serial.begin(9600);
-	rtc.setup();
-	sensorHub.setup();
-	sdService.setup();
+    Serial.begin(DEBUG_BAUD_RATE);
+    Serial.println(F("KnowFlow Enhanced Water Monitor v2.0"));
+    Serial.println(F("====================================="));
 
+    // Initialize EEPROM for calibration data
+    EEPROM.begin(512);
+
+    // Initialize RTC
+    rtc.setup();
+
+    // Initialize sensor hub
+    sensorHub.setup();
+
+    // Initialize SD service
+    sdService.setup();
+
+    // Initialize calibration service
+    calibrationService.setup();
+
+    // Initialize power manager
+    PowerConfig powerConfig;
+    powerConfig.sleepInterval = POWER_SLEEP_INTERVAL;
+    powerConfig.lowBatteryThreshold = LOW_BATTERY_THRESHOLD;
+    powerConfig.criticalBatteryThreshold = CRITICAL_BATTERY_THRESHOLD;
+    powerConfig.enableBatteryMonitoring = ENABLE_BATTERY_MONITORING;
+    powerConfig.enableSensorPowerControl = ENABLE_SENSOR_POWER_CONTROL;
+    powerConfig.enableSolarCharging = ENABLE_SOLAR_CHARGING;
+
+    powerManager.setup(powerConfig);
+
+    // Initialize IoT service (WiFi/MQTT)
+    Serial.print(F("Initializing IoT service..."));
+    iotService.setup(WIFI_SSID, WIFI_PASSWORD, MQTT_SERVER, MQTT_PORT);
+    Serial.println(F("OK"));
+
+    systemInitialized = true;
+    Serial.println(F("System initialization complete!"));
+    Serial.println(F("====================================="));
 }
-
-
-//********************************************************************************************
-// function name: sensorHub.getValueBySensorNumber (0)
-// Function Description: Get the sensor's values, and the different parameters represent the acquisition of different sensor data     
-// Parameters: 0 ph value  
-// Parameters: 1 temperature value    
-// Parameters: 2 Dissolved Oxygen
-// Parameters: 3 Conductivity
-// Parameters: 4 Redox potential
-// return value: returns a double type of data
-//********************************************************************************************
-
-unsigned long updateTime = 0;
 
 void loop() {
-	rtc.update();
-	sensorHub.update();
-	sdService.update();
+    if (!systemInitialized) return;
 
-	// ************************* Serial debugging ******************
-	if(millis() - updateTime > 2000)
-	{
-		updateTime = millis();
-		Serial.print(F("ph= "));
-		Serial.print(sensorHub.getValueBySensorNumber(0));
-		Serial.print(F("  Temp= "));
-		Serial.print(sensorHub.getValueBySensorNumber(1));
-		Serial.print(F("  Do= "));
-		Serial.print(sensorHub.getValueBySensorNumber(2));
-		Serial.print(F("  Ec= "));
-		Serial.print(sensorHub.getValueBySensorNumber(3));
-		Serial.print(F("  Orp= "));
-		Serial.println(sensorHub.getValueBySensorNumber(4));
-	}
+    unsigned long currentTime = millis();
+
+    // Update all services
+    rtc.update();
+    sensorHub.update();
+    sdService.update();
+    calibrationService.loop();
+    powerManager.loop();
+    iotService.loop();
+
+    // Main update cycle
+    if (currentTime - lastUpdateTime > updateInterval) {
+        lastUpdateTime = currentTime;
+
+        // Get all sensor readings
+        float ph = sensorHub.getValueBySensorNumber(0);
+        float temp = sensorHub.getValueBySensorNumber(1);
+        float doValue = sensorHub.getValueBySensorNumber(2);
+        float ec = sensorHub.getValueBySensorNumber(3);
+        float orp = sensorHub.getValueBySensorNumber(4);
+
+        // Print readings
+        printSensorReadings(ph, temp, doValue, ec, orp);
+
+        // Publish to IoT
+        if (iotService.isConnected()) {
+            iotService.publishData(ph, temp, doValue, ec, orp);
+        }
+
+        // Check for calibration commands
+        handleSerialCommands();
+    }
 }
 
+void printSensorReadings(float ph, float temp, float doValue, float ec, float orp) {
+    Serial.println(F("=== Current Readings ==="));
+    Serial.print(F("pH:        "));
+    Serial.println(ph, 2);
+    Serial.print(F("Temperature: "));
+    Serial.println(temp, 2);
+    Serial.print(F("DO:        "));
+    Serial.println(doValue, 2);
+    Serial.print(F("EC:        "));
+    Serial.println(ec, 2);
+    Serial.print(F("ORP:       "));
+    Serial.println(orp, 2);
 
+    // Print battery status
+    Serial.print(F("Battery:   "));
+    Serial.print(powerManager.getBatteryVoltage(), 2);
+    Serial.print(F("V ("));
+    Serial.print(powerManager.getBatteryPercentage());
+    Serial.println(F("%)"));
 
-//* ***************************** Print the relevant debugging information ************** ************ * /
-// Note: Arduino M0 need to replace Serial with SerialUSB when printing debugging information
+    Serial.print(F("WiFi:      "));
+    Serial.println(iotService.isConnected() ? F("Connected") : F("Disconnected"));
+    Serial.println(F("========================"));
+}
 
-// ************************* Serial debugging ******************
-//Serial.print("ph= ");
-//Serial.print(sensorHub.getValueBySensorNumber(0));
-//Serial.print("  Temp= ");
-//Serial.print(sensorHub.getValueBySensorNumber(1));
-//Serial.print("  Orp= ");
-//Serial.println(sensorHub.getValueBySensorNumber(4));
-//Serial.print("  EC= ");
-//Serial.println(sensorHub.getValueBySensorNumber(3));
+void handleSerialCommands() {
+    if (Serial.available()) {
+        String command = Serial.readStringUntil('\n');
+        command.trim();
 
+        if (command == "calibrate_ph") {
+            Serial.println(F("Starting pH calibration..."));
+            calibrationService.startCalibration(CALIBRATION_PH_3POINT);
+        } else if (command == "calibrate_ec") {
+            Serial.println(F("Starting EC calibration..."));
+            calibrationService.startCalibration(CALIBRATION_EC_1POINT);
+        } else if (command == "calibrate_do") {
+            Serial.println(F("Starting DO calibration..."));
+            calibrationService.startCalibration(CALIBRATION_DO_2POINT);
+        } else if (command == "calibrate_orp") {
+            Serial.println(F("Starting ORP calibration..."));
+            calibrationService.startCalibration(CALIBRATION_ORP_1POINT);
+        } else if (command == "sleep") {
+            Serial.println(F("Entering sleep mode..."));
+            powerManager.enterSleepMode();
+        } else if (command == "deep_sleep") {
+            Serial.println(F("Entering deep sleep mode..."));
+            powerManager.enterDeepSleepMode();
+        } else if (command == "battery") {
+            Serial.print(F("Battery: "));
+            Serial.print(powerManager.getBatteryVoltage());
+            Serial.print(F("V ("));
+            Serial.print(powerManager.getBatteryPercentage());
+            Serial.println(F("%)"));
+        } else if (command == "help") {
+            printHelp();
+        }
+    }
+}
 
-// ************************************************************ time ********************** **********
-//Serial.print("   Year = ");//year
-//Serial.print(rtc.year);
-//Serial.print("   Month = ");//month
-//Serial.print(rtc.month);
-//Serial.print("   Day = ");//day
-//Serial.print(rtc.day);
-//Serial.print("   Week = ");//week
-//Serial.print(rtc.week);
-//Serial.print("   Hour = ");//hour
-//Serial.print(rtc.hour);
-//Serial.print("   Minute = ");//minute
-//Serial.print(rtc.minute);
-//Serial.print("   Second = ");//second
-//Serial.println(rtc.second);
-
+void printHelp() {
+    Serial.println(F("KnowFlow Enhanced Commands:"));
+    Serial.println(F("  calibrate_ph   - Start pH 3-point calibration"));
+    Serial.println(F("  calibrate_ec   - Start EC 1-point calibration"));
+    Serial.println(F("  calibrate_do   - Start DO 2-point calibration"));
+    Serial.println(F("  calibrate_orp  - Start ORP 1-point calibration"));
+    Serial.println(F("  sleep          - Enter sleep mode"));
+    Serial.println(F("  deep_sleep     - Enter deep sleep mode"));
+    Serial.println(F("  battery        - Show battery status"));
+    Serial.println(F("  help           - Show this help"));
+}

@@ -47,6 +47,11 @@ DFRobot also offers a [KnowFlow starter kit.](https://www.dfrobot.com/product-16
 * ORP (ORP probe and ORP circuit board)
 * Temperature (temperature probe and temperature circuit board)
 * Dissolved Oxygen (DO probe, BNC and circuit board)
+#### Analog conversion:
+* DFRobot Gravity: I2C ADS1115 16-Bit ADC Module (DFR0553)
+  * I2C address: `0x48` by default, or `0x49` when the module address switch is changed
+  * Input range: `0~VCC`
+  * Default channel mapping in firmware: `A0=EC`, `A1=pH`, `A2=ORP`, `A3=AUX`
 #### Data Storage:
 * Micro-SD module
 * Micro SD card
@@ -76,6 +81,17 @@ for your application. Feel free to post your software questions on our wiki page
 1. Connect your Arduino Uno board
 1. Select Tools>Board: Arduino Uno and Tools>Ports: /dev/cu.usb...
 1. Click "Verify" then "Upload" the software to your board.
+
+### DFR0553 ADC configuration
+
+The enhanced `ArduinoUnoDo/WaterMonitor` firmware supports the Gravity DFR0553 I2C 16-bit ADC module without requiring the external DFRobot ADS1115 library. Configure it in `ArduinoUnoDo/WaterMonitor/config.h`:
+
+* `ENABLE_DFR0553_ADC`: enable or disable the I2C ADC path.
+* `DFR0553_I2C_ADDRESS`: default `0x48`; set to `0x49` if the hardware address switch is changed.
+* `DFR0553_FULL_SCALE_MV`: default `6144.0f`, matching the ADS1115 `+/-6.144V` full-scale setting used for `0~VCC` single-ended sensor inputs.
+* `DFR0553_EC_CHANNEL`, `DFR0553_PH_CHANNEL`, `DFR0553_ORP_CHANNEL`: map the EC, pH, and ORP analog front ends to ADS1115 channels.
+
+If the DFR0553 is not detected on I2C, the firmware falls back to the original MCU `analogRead()` path for the analog sensors.
 
 ## FAQ
 **Why can't I verify the code.**  
@@ -115,11 +131,11 @@ to github, so please forgive any stupid errors. Suggestions are welcome!) :)
 ## To DO List
 - [x] support DO Senser from DFRobot.
 - [ ] add youtube video tutorial.
-- [ ] Website setup. www.knowflow.org
+- [x] Website setup. www.knowflow.org
 - [x] Modify the construction of the files system.
-- [ ] IOT feature.
-- [ ] Calibration function
-- [ ] Low power function
+- [x] IOT feature.
+- [x] Calibration function
+- [x] Low power function
 
 ## Contact
 

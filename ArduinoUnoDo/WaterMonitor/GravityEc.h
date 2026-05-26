@@ -1,4 +1,4 @@
-﻿/*********************************************************************
+/*********************************************************************
 * GravityEc.h
 *
 * Copyright (C)    2017   [DFRobot](http://www.dfrobot.com),
@@ -23,6 +23,8 @@
 #include "GravityTemperature.h"
 #include "ISensor.h"
 
+class GravityDfr0553Adc;
+
 // external GravityTemperature ecTemperature;
 
 class GravityEc:public ISensor
@@ -37,6 +39,7 @@ public:
 
 public:
 	GravityEc(ISensor*);
+	GravityEc(ISensor*, GravityDfr0553Adc*, uint8_t);
 	~GravityEc();
 
 	// initialization
@@ -51,6 +54,8 @@ public:
 private:
 	// point to the temperature sensor pointer
 	ISensor* ecTemperature = NULL;
+	GravityDfr0553Adc* adc = NULL;
+	uint8_t adcChannel = 0;
 
 
 	static const int numReadings = 5;
@@ -72,4 +77,3 @@ private:
 	// Calculate the conductivity
 	void calculateEc();
 };
-
