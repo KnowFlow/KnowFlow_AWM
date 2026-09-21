@@ -1,11 +1,13 @@
+// Arduino Library
 #include "Arduino.h"
+
+// Algorithim Start
 uint16_t readMedianValue(int* dataArray, uint16_t arrayLength)
 {
 	uint16_t i, j, tempValue;
 	// 用冒泡法对数组进行排序
 
 	// Bubble sorting array
-
 	for (j = 0; j < arrayLength - 1; j++)
 	{
 		for (i = 0; i < arrayLength - 1 - j; i++)
